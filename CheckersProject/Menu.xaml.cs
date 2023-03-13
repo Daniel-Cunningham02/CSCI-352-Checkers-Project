@@ -23,5 +23,17 @@ namespace CheckersProject
         {
             InitializeComponent();
         }
+
+        private void Local_Game_Click(object sender, RoutedEventArgs e)
+        {
+            Board b = new Board();
+            this.Close();
+            b.Show();
+        }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
