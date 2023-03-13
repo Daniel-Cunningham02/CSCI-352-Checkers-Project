@@ -17,9 +17,9 @@ namespace CheckersProject
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Menu : Window
     {
-        public Window1()
+        public Menu()
         {
             InitializeComponent();
         }
