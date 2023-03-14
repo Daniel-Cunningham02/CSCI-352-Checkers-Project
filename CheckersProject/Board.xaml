@@ -6,28 +6,31 @@
         xmlns:local="clr-namespace:CheckersProject"
         mc:Ignorable="d"
         Title="Board" Height="450" Width="800">
-    <Grid Margin="0,0,347,0">
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+    <Grid>
+        <Grid Margin="0,0,347,0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Image Source="/checker.png" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="56,0,2,54" Grid.RowSpan="2"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="/checker.png" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="56,0,2,54" Grid.RowSpan="2"/>
+        </Grid>
+        <Button x:Name="Quit_Button" Content="Quit Game" HorizontalAlignment="Left" Margin="664,23,0,0" VerticalAlignment="Top" Height="56" Width="104" Click="Quit_Button_Click"/>
     </Grid>
 </Window>
