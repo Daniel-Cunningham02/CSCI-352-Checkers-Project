@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="Menu" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="Local_Game" Content="Local Game" HorizontalAlignment="Left" Margin="40,99,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="Local_Game_Click"/>
+        <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Margin="40,240,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="QuitButton_Click"/>
+        <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="40,35,0,0" TextWrapping="Wrap" Text="Checkers Game" VerticalAlignment="Top" Height="30" Width="161"/>
+        <Image Source="/brightBoard.png" HorizontalAlignment="Left" Height="279" Margin="302,0,0,0" VerticalAlignment="Center" Width="279"/>
+
     </Grid>
 </Window>
