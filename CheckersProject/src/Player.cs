@@ -20,5 +20,6 @@ namespace CheckersProject.src
     {
         private Piece[,] board;
         private gameState _state;
+
     }
 }

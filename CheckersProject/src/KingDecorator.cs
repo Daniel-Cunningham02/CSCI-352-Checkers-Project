@@ -8,5 +8,14 @@ namespace CheckersProject.src
 {
     internal class KingDecorator : ABSPieceDecorator
     {
+        public override void checkValidMoves()
+        {
+            
+        }
+
+        public override void move(Pos pos)
+        {
+            
+        }
     }
 }
