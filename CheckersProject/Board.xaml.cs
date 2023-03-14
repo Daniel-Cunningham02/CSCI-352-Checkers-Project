@@ -24,5 +24,12 @@ namespace CheckersProject
         {
             InitializeComponent();
         }
+
+        private void Quit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Menu m  = new Menu();
+            this.Close();
+            m.Show();
+        }
     }
 }
