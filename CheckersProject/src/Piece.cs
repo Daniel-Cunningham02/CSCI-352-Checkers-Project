@@ -10,6 +10,8 @@ namespace CheckersProject.src
     internal abstract class Piece
     {
         private List<Pos> validMoves;
+
+        abstract public void checkValidMoves();
         abstract public void move(Pos pos);
     }
 }

@@ -8,5 +8,11 @@ namespace CheckersProject.src
 {
     internal abstract class ABSPieceDecorator : Piece
     {
+        private Piece component;
+
+        public ABSPieceDecorator(Piece c)
+        {
+            this.component = c;
+        }
     }
 }
