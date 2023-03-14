@@ -107,5 +107,8 @@
   <ItemGroup>
     <Resource Include="brightBoard.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="quitbutton.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
