@@ -23,6 +23,25 @@ namespace CheckersProject
         public Board()
         {
             InitializeComponent();
+            for(int i = 0; i < 8; i++)
+            {
+                for(int j = 0; j < 8; j++)
+                {
+                    if ((i + j) % 2 == 1)
+                    {
+                        if (i < 3 || i > 4)
+                        {
+                            Image image = new Image();
+                            BitmapImage source = new BitmapImage(new Uri("/checker.png", UriKind.Relative));
+                            image.Source = source;
+                            Grid.SetRow(image, i);
+                            Grid.SetColumn(image, j);
+                            grid.Children.Add(image);
+                        }
+                    }
+
+                }
+            }
         }
 
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
