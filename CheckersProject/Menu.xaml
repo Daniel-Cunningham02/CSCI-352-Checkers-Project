@@ -70,7 +70,7 @@
     </Window.Resources>
     <Grid Background ="{DynamicResource WindowBackground}">
         <Button Style="{DynamicResource RoundedButton}" x:Name="Local_Game" Content="Local Game" Background="LightSeaGreen" HorizontalAlignment="Left" Margin="40,99,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="Local_Game_Click"/>
-        <Button Style="{DynamicResource RoundedButton}" x:Name="QuitButton" Content="Quit" Background="Red" HorizontalAlignment="Left" Margin="40,240,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="QuitButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="QuitButton" Content="Quit Program" Background="Red" HorizontalAlignment="Left" Margin="40,240,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="QuitButton_Click"/>
         <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="40,35,0,0" TextWrapping="Wrap" Text="Checkers Game" VerticalAlignment="Top" Height="30" Width="161"/>
         <Image Source="/brightBoard.png" HorizontalAlignment="Left" Height="279" Margin="302,0,0,0" VerticalAlignment="Center" Width="279"/>
 

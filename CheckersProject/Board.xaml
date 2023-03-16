@@ -29,7 +29,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Source="/checker.png" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="56,0,2,54" Grid.RowSpan="2"/>
+            <Image Source="/CheckerRedTransparent.png" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="56,0,2,54" Grid.RowSpan="2"/>
         </Grid>
         <Button x:Name="Quit_Button" Content="Quit Game" Background="Red" HorizontalAlignment="Left" Margin="664,23,0,0" VerticalAlignment="Top" Height="56" Width="104" Click="Quit_Button_Click"/>
         <TextBlock x:Name="Player_1_Pieces" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="481,427,0,0" TextWrapping="Wrap" Text="Player 1 Pieces" VerticalAlignment="Top" Width="140"/>
