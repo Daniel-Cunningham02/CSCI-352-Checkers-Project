@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CheckersProject.src;
 
 namespace CheckersProject
 {
@@ -23,25 +24,41 @@ namespace CheckersProject
         public Board()
         {
             InitializeComponent();
+            Player player = new Player();
             for(int i = 0; i < 8; i++)
             {
                 for(int j = 0; j < 8; j++)
                 {
                     if ((i + j) % 2 == 1)
                     {
-                        if (i < 3 || i > 4)
+                        if (i < 3) 
                         {
-                            Image image = new Image();
+                            BlackPieceDecorator piece = new BlackPieceDecorator(null);
+                            player.setPiece(new Pos(i, j), piece);
+                            /*Image image = new Image();
                             BitmapImage source = new BitmapImage(new Uri("/checker.png", UriKind.Relative));
                             image.Source = source;
                             Grid.SetRow(image, i);
                             Grid.SetColumn(image, j);
-                            grid.Children.Add(image);
+                            grid.Children.Add(image);*/
                         }
+                        else if(i > 4)
+                        {
+                            
+                        }
+                        else
+                        {
+                            player.setPiece(new Pos(i, j), null);
+                        }
+                    }
+                    else
+                    {
+                        player.setPiece(new Pos(i, j), null);
                     }
 
                 }
             }
+            this.ResizeMode = ResizeMode.NoResize;
         }
 
         private void Quit_Button_Click(object sender, RoutedEventArgs e)

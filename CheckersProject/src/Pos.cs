@@ -10,6 +10,11 @@ namespace CheckersProject.src
     {
         private int row, column;
 
+        public Pos(int row, int column)
+        {
+            this.row = row;
+            this.column = column;
+        }
         public int Row
         {
             get { return row; }
