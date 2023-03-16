@@ -22,6 +22,7 @@ namespace CheckersProject
         public Menu()
         {
             InitializeComponent();
+            this.ResizeMode = ResizeMode.NoResize;
         }
 
         private void Local_Game_Click(object sender, RoutedEventArgs e)

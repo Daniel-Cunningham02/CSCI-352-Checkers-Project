@@ -23,6 +23,15 @@ namespace CheckersProject
         public Board()
         {
             InitializeComponent();
+            this.ResizeMode = ResizeMode.NoResize;
+            //this.ResizeMode = ResizeMode.CanResize;
+        }
+
+        private void Quit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Menu m  = new Menu();
+            this.Close();
+            m.Show();
         }
     }
 }
