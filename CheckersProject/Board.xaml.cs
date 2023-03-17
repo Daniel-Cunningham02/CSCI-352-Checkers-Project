@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CheckersProject.src;
+using System.Threading;
 
 namespace CheckersProject
 {
@@ -23,8 +24,8 @@ namespace CheckersProject
     {
         public Board()
         {
+            Dictionary<string, Thread> threadMap= new Dictionary<string, Thread>();
             InitializeComponent();
-            Grid myGrid = grid;
             Player player = new Player(this);
             for(int i = 0; i < 8; i++)
             {
@@ -56,32 +57,24 @@ namespace CheckersProject
             }
             this.ResizeMode = ResizeMode.NoResize;
             player.update();
+            threadMap.Add("inputThread", new Thread(new ThreadStart(input)));
         }
 
-        public void setPieceImage(Pos pos, string type)
+        private void input()
         {
-            if(type == "CheckersProject.src.RedPieceDecorator")
+            while(true)
             {
-                Image image = new Image();
-                BitmapImage source = new BitmapImage(new Uri("/CheckerRedTransparent.png", UriKind.Relative));
-                image.Source = source;
-                Grid.SetRow(image, pos.Row);
-                Grid.SetColumn(image, pos.Column);
-                grid.Children.Add(image);
-            }
-            else
-            {
-                Image image = new Image();
-                BitmapImage source = new BitmapImage(new Uri("/CheckerBlueTransparent.png", UriKind.Relative));
-                image.Source = source;
-                Grid.SetRow(image, pos.Row);
-                Grid.SetColumn(image, pos.Column);
-                grid.Children.Add(image);
+                if(Mouse.LeftButton == MouseButtonState.Pressed)
+                {
+                    IInputElement pointed = grid.InputHitTest(Mouse.GetPosition(grid));
+                        
+                }
             }
         }
 
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
+            
             Menu m  = new Menu();
             this.Close();
             m.Show();
