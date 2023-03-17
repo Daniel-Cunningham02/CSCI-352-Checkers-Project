@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckersProject.src
 {
-    /*internal class RedPieceDecorator : ABSPieceDecorator
+    internal class RedPieceDecorator : ABSPieceDecorator
     {
 
         public RedPieceDecorator(Piece c) : base(c) { }
@@ -19,5 +19,5 @@ namespace CheckersProject.src
         {
             throw new NotImplementedException();
         }
-    }*/
+    }
 }

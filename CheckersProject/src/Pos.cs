@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckersProject.src
 {
-    internal class Pos
+    public class Pos
     {
         private int row, column;
 

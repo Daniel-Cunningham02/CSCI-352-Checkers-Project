@@ -24,7 +24,8 @@ namespace CheckersProject
         public Board()
         {
             InitializeComponent();
-            Player player = new Player();
+            Grid myGrid = grid;
+            Player player = new Player(this);
             for(int i = 0; i < 8; i++)
             {
                 for(int j = 0; j < 8; j++)
@@ -35,16 +36,11 @@ namespace CheckersProject
                         {
                             BlackPieceDecorator piece = new BlackPieceDecorator(null);
                             player.setPiece(new Pos(i, j), piece);
-                            /*Image image = new Image();
-                            BitmapImage source = new BitmapImage(new Uri("/checker.png", UriKind.Relative));
-                            image.Source = source;
-                            Grid.SetRow(image, i);
-                            Grid.SetColumn(image, j);
-                            grid.Children.Add(image);*/
                         }
                         else if(i > 4)
                         {
-                            
+                            RedPieceDecorator piece = new RedPieceDecorator(null);
+                            player.setPiece(new Pos(i, j), piece);
                         }
                         else
                         {
@@ -59,6 +55,29 @@ namespace CheckersProject
                 }
             }
             this.ResizeMode = ResizeMode.NoResize;
+            player.update();
+        }
+
+        public void setPieceImage(Pos pos, string type)
+        {
+            if(type == "CheckersProject.src.RedPieceDecorator")
+            {
+                Image image = new Image();
+                BitmapImage source = new BitmapImage(new Uri("/CheckerRedTransparent.png", UriKind.Relative));
+                image.Source = source;
+                Grid.SetRow(image, pos.Row);
+                Grid.SetColumn(image, pos.Column);
+                grid.Children.Add(image);
+            }
+            else
+            {
+                Image image = new Image();
+                BitmapImage source = new BitmapImage(new Uri("/CheckerBlueTransparent.png", UriKind.Relative));
+                image.Source = source;
+                Grid.SetRow(image, pos.Row);
+                Grid.SetColumn(image, pos.Column);
+                grid.Children.Add(image);
+            }
         }
 
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
