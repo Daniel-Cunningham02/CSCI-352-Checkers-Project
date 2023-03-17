@@ -38,6 +38,10 @@ namespace CheckersProject.src
             b.grid.Children.Remove(p.getImage());
             p.updateImage(b);
             b.grid.Children.Add(p.getImage());
+            if (_state == gameState.redTurn)
+                _state = gameState.blackTurn;
+            else if(_state == gameState.blackTurn)
+                _state = gameState.redTurn;
         }
 
         public void setPiece(Pos pos, Piece p)
