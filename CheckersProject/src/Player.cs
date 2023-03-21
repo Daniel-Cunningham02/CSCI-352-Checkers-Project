@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using CheckersProject;
 
 namespace CheckersProject.src
 {
@@ -22,12 +21,10 @@ namespace CheckersProject.src
     {
         private Piece[,] board = new Piece[8, 8];
         private gameState _state;
-        Board b;
 
-        public Player(Board b)
+        public Player()
         {
-            _state = gameState.redTurn;
-            this.b = b;
+
         }
         public void move(Pos pos, Piece p)
         {
@@ -51,22 +48,23 @@ namespace CheckersProject.src
             p.Column = pos.Column;
         }
 
-        public void update()
+        public void printBoard()
         {
             for(int i = 0; i < 8; i++)
             {
                 for(int j = 0; j < 8; j++)
                 {
-                    if (board[i, j] != null)
+                    if (board[i, j] == null)
                     {
-                        board[i, j].updateImage(b);
-                        
-                       /*b.esetPieceImag(new Pos(i, j), board[i, j].ToString());*/
+                        TextBox text = new TextBox();
+                        text.Text = board[i, j].ToString();
+                        Grid.SetRow(text, i);
+                        Grid.SetRow(text, j);
+                        Board.grid.Children.Add(text);
                     }
-                    else if (board[i, j] == null)
+                    else if (board[i, j] != null)
                     {
-                        b.grid.Children.RemoveAt((i*8) + j);
-                        //b.setPieceImage(new Pos(i, j), "null");
+                        
                     }
                 }
             }

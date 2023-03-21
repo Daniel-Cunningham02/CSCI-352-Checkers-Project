@@ -26,7 +26,7 @@ namespace CheckersProject
         {
             Dictionary<string, Thread> threadMap= new Dictionary<string, Thread>();
             InitializeComponent();
-            Player player = new Player(this);
+            Player player = new Player();
             for(int i = 0; i < 8; i++)
             {
                 for(int j = 0; j < 8; j++)
@@ -37,11 +37,16 @@ namespace CheckersProject
                         {
                             BlackPieceDecorator piece = new BlackPieceDecorator(null);
                             player.setPiece(new Pos(i, j), piece);
+                            /*Image image = new Image();
+                            BitmapImage source = new BitmapImage(new Uri("/checker.png", UriKind.Relative));
+                            image.Source = source;
+                            Grid.SetRow(image, i);
+                            Grid.SetColumn(image, j);
+                            grid.Children.Add(image);*/
                         }
                         else if(i > 4)
                         {
-                            RedPieceDecorator piece = new RedPieceDecorator(null);
-                            player.setPiece(new Pos(i, j), piece);
+                            
                         }
                         else
                         {
@@ -56,20 +61,6 @@ namespace CheckersProject
                 }
             }
             this.ResizeMode = ResizeMode.NoResize;
-            player.update();
-            threadMap.Add("inputThread", new Thread(new ThreadStart(input)));
-        }
-
-        private void input()
-        {
-            while(true)
-            {
-                if(Mouse.LeftButton == MouseButtonState.Pressed)
-                {
-                    IInputElement pointed = grid.InputHitTest(Mouse.GetPosition(grid));
-                        
-                }
-            }
         }
 
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
