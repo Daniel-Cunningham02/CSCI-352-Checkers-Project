@@ -21,31 +21,19 @@ namespace CheckersProject.src
     {
         private Piece[,] board = new Piece[8, 8];
         private gameState _state;
+        Board B;
 
-        public Player()
+        public Player(Board b)
         {
-
+            B = b;
         }
         public void move(Pos pos, Piece p)
         {
-            board[p.Row, p.Column] = null;
-            board[pos.Row, pos.Column] = p;
-            p.Row = pos.Row;
-            p.Column = pos.Column;
-            b.grid.Children.Remove(p.getImage());
-            p.updateImage(b);
-            b.grid.Children.Add(p.getImage());
-            if (_state == gameState.redTurn)
-                _state = gameState.blackTurn;
-            else if(_state == gameState.blackTurn)
-                _state = gameState.redTurn;
         }
 
         public void setPiece(Pos pos, Piece p)
         {
             board[pos.Row, pos.Column] = p;
-            p.Row = pos.Row;
-            p.Column = pos.Column;
         }
 
         public void printBoard()
@@ -60,11 +48,7 @@ namespace CheckersProject.src
                         text.Text = board[i, j].ToString();
                         Grid.SetRow(text, i);
                         Grid.SetRow(text, j);
-                        Board.grid.Children.Add(text);
-                    }
-                    else if (board[i, j] != null)
-                    {
-                        
+                        B.grid.Children.Add(text);
                     }
                 }
             }

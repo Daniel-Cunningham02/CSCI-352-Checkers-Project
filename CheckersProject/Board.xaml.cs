@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CheckersProject.src;
 using System.Threading;
+using System.Linq.Expressions;
+using System.Runtime.Remoting.Channels;
 
 namespace CheckersProject
 {
@@ -26,15 +28,26 @@ namespace CheckersProject
         {
             Dictionary<string, Thread> threadMap= new Dictionary<string, Thread>();
             InitializeComponent();
-            Player player = new Player();
+            Player player = new Player(this);
             for(int i = 0; i < 8; i++)
             {
                 for(int j = 0; j < 8; j++)
                 {
                     if ((i + j) % 2 == 1)
                     {
+                        Button button = new Button();
+                        button.Name = "Button" + i + j;
+                        button.Background = Brushes.Black;
+                        button.Click += new RoutedEventHandler(Move_Button_Click);
+                        Grid.SetRow(button, i);
+                        Grid.SetColumn(button, j);
+                        grid.Children.Add(button);
                         if (i < 3) 
                         {
+                            // Creating button here and setting its Row and Column within the grid to i and j respectively.
+                            
+
+
                             BlackPieceDecorator piece = new BlackPieceDecorator(null);
                             player.setPiece(new Pos(i, j), piece);
                             /*Image image = new Image();
@@ -55,6 +68,13 @@ namespace CheckersProject
                     }
                     else
                     {
+                        Button button = new Button();
+                        button.Name = "Button" + i + j;
+                        button.Background = Brushes.Red;
+                        button.Click += new RoutedEventHandler(Move_Button_Click);
+                        Grid.SetRow(button, i);
+                        Grid.SetColumn(button, j);
+                        grid.Children.Add(button);
                         player.setPiece(new Pos(i, j), null);
                     }
 
@@ -63,6 +83,10 @@ namespace CheckersProject
             this.ResizeMode = ResizeMode.NoResize;
         }
 
+        private void Move_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).Content = "Hit";
+        }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
             
