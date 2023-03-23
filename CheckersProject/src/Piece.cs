@@ -14,7 +14,7 @@ namespace CheckersProject.src
         private List<Pos> validMoves;
         private int row, column;
         public int Row { get { return row; } set { this.row = value; } }
-        public int Column { get { return row; } set {this.column = value; } }
+        public int Column { get { return column; } set {this.column = value; } }
         protected Image i = new Image();
         abstract public void checkValidMoves();
 

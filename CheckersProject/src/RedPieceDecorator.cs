@@ -8,10 +8,12 @@ using System.Windows.Media.Imaging;
 
 namespace CheckersProject.src
 {
-    /*internal class RedPieceDecorator : ABSPieceDecorator
+    internal class RedPieceDecorator : ABSPieceDecorator
     {
 
-        public RedPieceDecorator(Piece c) : base(c) {
+        public RedPieceDecorator(Piece c, Pos pos) : base(c) {
+            Row = pos.Row;
+            Column = pos.Column;
             BitmapImage source = new BitmapImage(new Uri("/CheckerRedTransparent.png", UriKind.Relative));
             i.Source = source;
         }
@@ -21,14 +23,8 @@ namespace CheckersProject.src
         }
         public override void updateImage(Board b)
         {
-            Image temp = new Image();
-            temp.Source = i.Source;
-            Grid.SetRow(temp, Row);
-            Grid.SetColumn(temp, Column);
-            i = temp;
-            Grid.SetRow(i, Row);
-            Grid.SetColumn(i, Column);
-            b.grid.Children.Add(i);
+            Button button = (Button)b.grid.FindName("Button" + Row.ToString() + Column.ToString());
+            button.Content = i;
 
         }
 
@@ -36,5 +32,5 @@ namespace CheckersProject.src
         {
             return i;
         }
-    }*/
+    }
 }

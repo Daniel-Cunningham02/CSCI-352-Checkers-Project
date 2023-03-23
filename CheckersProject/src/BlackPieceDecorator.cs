@@ -11,8 +11,9 @@ namespace CheckersProject.src
 {
     internal class BlackPieceDecorator : ABSPieceDecorator
     {
-        public BlackPieceDecorator(Piece c) : base(c) {
-            
+        public BlackPieceDecorator(Piece c, Pos pos) : base(c) {
+            Row = pos.Row;
+            Column = pos.Column;
             BitmapImage source = new BitmapImage(new Uri("/CheckerBlueTransparent.png", UriKind.Relative));
             i.Source = source;
         }
@@ -31,14 +32,9 @@ namespace CheckersProject.src
 
         public override void updateImage(Board b)
         {
-            Image temp = new Image();
-            temp.Source = i.Source;
-            Grid.SetRow(temp, Row);
-            Grid.SetColumn(temp, Column);
-            i = temp;
-            Grid.SetRow(i, Row);
-            Grid.SetColumn(i, Column);
-            b.grid.Children.Add(i);
+            Button button = (Button)b.grid.FindName("Button" + Row.ToString() + Column.ToString());
+            button.Content = i;
+            
 
         }
 
