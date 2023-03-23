@@ -18,17 +18,6 @@ namespace CheckersProject.src
             i.Source = source;
         }
 
-        /*public override void show(Pos pos, Board b)
-        {
-            Grid.SetRow(i, pos.Row);
-            Grid.SetColumn(i, pos.Column);
-            b.grid.Children.Add(i);
-        }*/
-
-        public override void checkValidMoves()
-        {
-             
-        }
 
         public override void updateImage(Board b)
         {
@@ -41,6 +30,18 @@ namespace CheckersProject.src
         public override Image getImage()
         {
             return i;
+        }
+
+        public override void SetValidMoves(List<Pos> validMoves)
+        {
+            ValidMoves = validMoves;
+        }
+
+        public override Image getImageClone()
+        {
+            Image image2 = new Image();
+            image2.Source = i.Source;
+            return image2;
         }
     }
 }

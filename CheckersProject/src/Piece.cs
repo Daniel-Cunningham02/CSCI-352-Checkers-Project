@@ -15,11 +15,16 @@ namespace CheckersProject.src
         private int row, column;
         public int Row { get { return row; } set { this.row = value; } }
         public int Column { get { return column; } set {this.column = value; } }
+
+        public List<Pos> ValidMoves { get { return validMoves; } set { this.validMoves = value; } }
         protected Image i = new Image();
-        abstract public void checkValidMoves();
 
         abstract public void updateImage(Board b);
 
         abstract public Image getImage();
+
+        abstract public Image getImageClone();
+
+        abstract public void SetValidMoves(List<Pos> validMoves);
     }
 }

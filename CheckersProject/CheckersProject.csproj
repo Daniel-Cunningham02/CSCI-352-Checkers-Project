@@ -60,6 +60,7 @@
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\ABSPieceDecorator.cs" />
+    <Compile Include="src\BlankPiece.cs" />
     <Compile Include="src\BlackPieceDecorator.cs" />
     <Compile Include="src\KingDecorator.cs" />
     <Compile Include="src\Piece.cs" />
@@ -121,6 +122,9 @@
   <ItemGroup>
     <Resource Include="CheckerBlueTransparent.png" />
     <Resource Include="CheckerRedTransparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CheckerBlank.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -17,10 +17,7 @@ namespace CheckersProject.src
             BitmapImage source = new BitmapImage(new Uri("/CheckerRedTransparent.png", UriKind.Relative));
             i.Source = source;
         }
-        public override void checkValidMoves()
-        {
-
-        }
+        
         public override void updateImage(Board b)
         {
             Button button = (Button)b.grid.FindName("Button" + Row.ToString() + Column.ToString());
@@ -31,6 +28,18 @@ namespace CheckersProject.src
         public override Image getImage()
         {
             return i;
+        }
+
+        public override void SetValidMoves(List<Pos> validMoves)
+        {
+            ValidMoves = validMoves;
+        }
+
+        public override Image getImageClone()
+        {
+            Image image2 = new Image();
+            image2.Source = i.Source;
+            return image2;
         }
     }
 }
