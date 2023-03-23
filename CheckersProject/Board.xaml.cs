@@ -26,12 +26,15 @@ namespace CheckersProject
     {
         private bool FirstClick;
         Piece previousClick;
+        Button previousClickedButton;
         Player player;
+        SolidColorBrush Hovered;
         public Board()
         {
             /* Start here to understand this branch*/
             InitializeComponent();
             FirstClick = false;
+            Hovered = new SolidColorBrush(Color.FromRgb(50, 255, 50));
 
             player = new Player(this); // Have to pass in this because the player class takes in a Board object as a parameter
             for(int i = 0; i < 8; i++)
@@ -43,7 +46,7 @@ namespace CheckersProject
                         // Creates button and adds it to the grid along with its color.
                         Button button = new Button {
                             Name = ("Button" + i.ToString() + j.ToString()),
-                            Background = Brushes.Black
+                            Background = Brushes.Black,
                         };
                         RegisterName(button.Name, button); /* Have to register the name with the button because they aren't bound
                         automatically when created programmatically. Name is later used to access the button and its content(piece image).*/
@@ -88,6 +91,7 @@ namespace CheckersProject
             
         }
 
+       
 
         private void Move_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -101,13 +105,16 @@ namespace CheckersProject
             {
                 FirstClick = true; //Find a way to keep the hover effect for mouse here
                 /* Uses bool FirstClick here to account for having to click twice */
+                clicked.Background = Hovered;
                 previousClick = player.GetPiece(new Pos(row, col));
+                previousClickedButton = clicked;
                 player.CheckValidMoves(previousClick);
             }
             else
             {
                 player.Move(new Pos(row, col), previousClick);
                 FirstClick = false;
+                previousClickedButton.Background = Brushes.Black;
             }
             
         }
