@@ -35,6 +35,7 @@ namespace CheckersProject
                 {
                     if ((i + j) % 2 == 1)
                     {
+                        // Creates button and adds it to the grid along with its color.
                         Button button = new Button();
                         button.Name = "Button" + i + j;
                         button.Background = Brushes.Black;
@@ -42,10 +43,10 @@ namespace CheckersProject
                         Grid.SetRow(button, i);
                         Grid.SetColumn(button, j);
                         grid.Children.Add(button);
+
+
                         if (i < 3) 
                         {
-                            // Creating button here and setting its Row and Column within the grid to i and j respectively.
-                            
 
 
                             BlackPieceDecorator piece = new BlackPieceDecorator(null);
@@ -68,13 +69,16 @@ namespace CheckersProject
                     }
                     else
                     {
+                        // Creating button here too
                         Button button = new Button();
                         button.Name = "Button" + i + j;
                         button.Background = Brushes.Red;
-                        button.Click += new RoutedEventHandler(Move_Button_Click);
+                        button.Click += new RoutedEventHandler(Move_Button_Click); // Creates new EventHandler for the button because there is not a handler made automatically.
                         Grid.SetRow(button, i);
                         Grid.SetColumn(button, j);
                         grid.Children.Add(button);
+
+
                         player.setPiece(new Pos(i, j), null);
                     }
 
@@ -85,7 +89,7 @@ namespace CheckersProject
 
         private void Move_Button_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)sender).Content = "Hit";
+            ((Button)sender).Content = "Hit"; // Changes the content of the button to hit.
         }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
