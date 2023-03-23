@@ -26,7 +26,7 @@ namespace CheckersProject
     {
         public Board()
         {
-            Dictionary<string, Thread> threadMap= new Dictionary<string, Thread>();
+            bool FirstClick = false; 
             InitializeComponent();
             Player player = new Player(this);
             for(int i = 0; i < 8; i++)
@@ -36,10 +36,12 @@ namespace CheckersProject
                     if ((i + j) % 2 == 1)
                     {
                         // Creates button and adds it to the grid along with its color.
-                        Button button = new Button();
-                        button.Name = "Button" + i + j;
-                        button.Background = Brushes.Black;
-                        button.Click += new RoutedEventHandler(Move_Button_Click);
+                        Button button = new Button {
+                            Name = ("Button" + i.ToString() + j.ToString()),
+                            Background = Brushes.Black
+                        };
+                        RegisterName(button.Name, button);
+                        button.Click += new RoutedEventHandler(Move_Button_Click); // Creates new EventHandler for the button because there is not a handler made automatically.
                         Grid.SetRow(button, i);
                         Grid.SetColumn(button, j);
                         grid.Children.Add(button);
@@ -47,39 +49,34 @@ namespace CheckersProject
 
                         if (i < 3) 
                         {
-
-
-                            BlackPieceDecorator piece = new BlackPieceDecorator(null);
-                            player.setPiece(new Pos(i, j), piece);
-                            /*Image image = new Image();
-                            BitmapImage source = new BitmapImage(new Uri("/checker.png", UriKind.Relative));
-                            image.Source = source;
-                            Grid.SetRow(image, i);
-                            Grid.SetColumn(image, j);
-                            grid.Children.Add(image);*/
+                            BlackPieceDecorator piece = new BlackPieceDecorator(null, new Pos(i, j));
+                            piece.updateImage(this);
+                            // Add Piece Creation
                         }
                         else if(i > 4)
                         {
-                            
+                            RedPieceDecorator piece = new RedPieceDecorator(null, new Pos(i, j));
+                            piece.updateImage(this);
                         }
                         else
                         {
-                            player.setPiece(new Pos(i, j), null);
+                            // Add Piece Creation
                         }
                     }
                     else
                     {
                         // Creating button here too
-                        Button button = new Button();
-                        button.Name = "Button" + i + j;
-                        button.Background = Brushes.Red;
+                        Button button = new Button
+                        {
+                            Name = ("Button" + i.ToString() + j.ToString()),
+                            Background = Brushes.Red
+                        };
+                        RegisterName(button.Name, button);
                         button.Click += new RoutedEventHandler(Move_Button_Click); // Creates new EventHandler for the button because there is not a handler made automatically.
                         Grid.SetRow(button, i);
                         Grid.SetColumn(button, j);
                         grid.Children.Add(button);
 
-
-                        player.setPiece(new Pos(i, j), null);
                     }
 
                 }
