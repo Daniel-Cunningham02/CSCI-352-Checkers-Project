@@ -113,8 +113,14 @@ namespace CheckersProject
             else
             {
                 player.Move(new Pos(row, col), previousClick);
+                
                 FirstClick = false;
                 previousClickedButton.Background = Brushes.Black;
+                if(player.GetPiece(new Pos(row, col)).CheckPromotion())
+                {
+                    player.GetPiece(new Pos(row, col)).updateImage(this);
+                }
+                
             }
             
         }

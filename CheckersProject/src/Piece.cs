@@ -26,5 +26,8 @@ namespace CheckersProject.src
         abstract public Image getImageClone();
 
         abstract public void SetValidMoves(List<Pos> validMoves);
+        abstract public bool CheckPromotion();
+
+        abstract public void UpdateComponent();
     }
 }
