@@ -48,7 +48,7 @@ namespace CheckersProject.src
                         {
                             if (p.Row + 2 < 8 && p.Row + 2 >= 0)
                             {
-                                if (p.Column + 2 < 8 && p.Column + 2 < 8)
+                                if (p.Column + 2 < 8 && p.Column + 2 >= 0)
                                 {
                                     if (board[p.Row + 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
                                     {
@@ -72,7 +72,7 @@ namespace CheckersProject.src
                         {
                             if (p.Row + 2 < 8 && p.Row + 2 >= 0)
                             {
-                                if (p.Column - 2 < 8 && p.Column - 2 < 8)
+                                if (p.Column - 2 < 8 && p.Column - 2 >= 0)
                                 {
                                     if (board[p.Row + 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
                                     {
@@ -84,6 +84,61 @@ namespace CheckersProject.src
                         else
                         {
                             moves.Add(new Pos(p.Row + 1, p.Column - 1));
+                        }
+                    }
+                }
+                if(p.GetComponent() != null)
+                {
+                    if (p.Row - 1 < 8 && p.Row - 1 >= 0)
+                    {
+                        Button button;
+                        if (p.Column + 1 < 8 && p.Column + 1 >= 0)
+                        {
+                            /*Image i = p.getImageClone();
+                            button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column + 1));
+                            i.Opacity = 0.5;
+                            button.Content = i;*/
+                            if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece")
+                            {
+                                if (p.Row - 2 < 8 && p.Row - 2 >= 0)
+                                {
+                                    if (p.Column + 2 < 8 && p.Column + 2 >= 0)
+                                    {
+                                        if (board[p.Row - 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
+                                        {
+                                            moves.Add(new Pos(p.Row - 2, p.Column + 2));
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                moves.Add(new Pos(p.Row - 1, p.Column + 1));
+                            }
+                        }
+                        if (p.Column - 1 < 8 && p.Column - 1 >= 0)
+                        {
+                            /*Image i = p.getImageClone();
+                            button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column - 1));
+                            i.Opacity = 0.5;
+                            button.Content = i;*/
+                            if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece")
+                            {
+                                if (p.Row - 2 < 8 && p.Row - 2 >= 0)
+                                {
+                                    if (p.Column - 2 < 8 && p.Column - 2 >= 0)
+                                    {
+                                        if (board[p.Row - 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
+                                        {
+                                            moves.Add(new Pos(p.Row - 2, p.Column - 2));
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                moves.Add(new Pos(p.Row - 1, p.Column - 1));
+                            }
                         }
                     }
                 }
@@ -103,7 +158,7 @@ namespace CheckersProject.src
                         {
                             if(p.Row - 2 < 8 && p.Row - 2 >= 0)
                             {
-                                if(p.Column + 2 < 8 && p.Column + 2 < 8)
+                                if(p.Column + 2 < 8 && p.Column + 2 >= 0)
                                 {
                                     if (board[p.Row - 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
                                     {
@@ -127,7 +182,7 @@ namespace CheckersProject.src
                         {
                             if (p.Row - 2 < 8 && p.Row - 2 >= 0)
                             {
-                                if (p.Column - 2 < 8 && p.Column - 2 < 8)
+                                if (p.Column - 2 < 8 && p.Column - 2 >= 0)
                                 {
                                     if (board[p.Row - 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
                                     {
@@ -139,6 +194,57 @@ namespace CheckersProject.src
                         else
                         {
                             moves.Add(new Pos(p.Row - 1, p.Column - 1));
+                        }
+                    }
+                }
+                if(p.GetComponent() != null)
+                {
+                    if (p.Column + 1 < 8 && p.Column + 1 >= 0)
+                    {
+                        /*Image i = p.getImageClone();
+                        button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column + 1));
+                        i.Opacity = 0.5;
+                        button.Content = i;*/
+                        if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece")
+                        {
+                            if (p.Row + 2 < 8 && p.Row + 2 >= 0)
+                            {
+                                if (p.Column + 2 < 8 && p.Column + 2 >= 0)
+                                {
+                                    if (board[p.Row + 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
+                                    {
+                                        moves.Add(new Pos(p.Row + 2, p.Column + 2));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            moves.Add(new Pos(p.Row + 1, p.Column + 1));
+                        }
+                    }
+                    if (p.Column - 1 < 8 && p.Column - 1 >= 0)
+                    {
+                        /*Image i = p.getImageClone();
+                        button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column - 1));
+                        i.Opacity = 0.5;
+                        button.Content = i;*/
+                        if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece")
+                        {
+                            if (p.Row + 2 < 8 && p.Row + 2 >= 0)
+                            {
+                                if (p.Column - 2 < 8 && p.Column - 2 >= 0)
+                                {   
+                                    if (board[p.Row + 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
+                                    {
+                                        moves.Add(new Pos(p.Row + 2, p.Column - 2));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            moves.Add(new Pos(p.Row + 1, p.Column - 1));
                         }
                     }
                 }
@@ -159,17 +265,38 @@ namespace CheckersProject.src
             }
             if (p != null && board[pos.Row, pos.Column] != null && moveFound == true)
             {
-                Piece temp = board[pos.Row, pos.Column];
-                board[pos.Row, pos.Column] = p;
-                board[p.Row, p.Column] = temp;
-                board[p.Row, p.Column].Row = p.Row;
-                board[p.Row, p.Column].Column = p.Column;
-                temp = board[p.Row, p.Column];
-                p.Row = pos.Row;
-                p.Column = pos.Column;
+                if(Math.Abs(pos.Row - p.Row) > 1 && Math.Abs(pos.Column - p.Column) > 1)
+                {
+                    board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
+                    board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(B);
 
-                temp.updateImage(B);
-                p.updateImage(B);
+                    Piece temp = board[pos.Row, pos.Column];
+                    board[pos.Row, pos.Column] = p;
+                    board[p.Row, p.Column] = temp;
+                    board[p.Row, p.Column].Row = p.Row;
+                    board[p.Row, p.Column].Column = p.Column;
+                    temp = board[p.Row, p.Column];
+                    p.Row = pos.Row;
+                    p.Column = pos.Column;
+
+
+                    temp.updateImage(B);
+                    p.updateImage(B);
+                }
+                else
+                {
+                    Piece temp = board[pos.Row, pos.Column];
+                    board[pos.Row, pos.Column] = p;
+                    board[p.Row, p.Column] = temp;
+                    board[p.Row, p.Column].Row = p.Row;
+                    board[p.Row, p.Column].Column = p.Column;
+                    temp = board[p.Row, p.Column];
+                    p.Row = pos.Row;
+                    p.Column = pos.Column;
+
+                    temp.updateImage(B);
+                    p.updateImage(B);
+                }
             }
 
         }

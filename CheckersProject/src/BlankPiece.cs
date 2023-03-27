@@ -48,5 +48,10 @@ namespace CheckersProject.src
         public override void UpdateComponent()
         {
         }
+
+        public override Piece GetComponent()
+        {
+            return null;
+        }
     }
 }

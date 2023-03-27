@@ -29,5 +29,7 @@ namespace CheckersProject.src
         abstract public bool CheckPromotion();
 
         abstract public void UpdateComponent();
+
+        abstract public Piece GetComponent();
     }
 }

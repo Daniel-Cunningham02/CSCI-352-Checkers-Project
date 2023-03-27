@@ -33,10 +33,16 @@ namespace CheckersProject.src
         {
         }
 
+        public override Piece GetComponent()
+        {
+            return null;
+        }
+
         public override Image getImage()
         {
             return i;
         }
+
 
         public override void SetValidMoves(List<Pos> validMoves)
         {

@@ -38,6 +38,11 @@ namespace CheckersProject.src
             Component.Column = Column;
         }
 
+        public override Piece GetComponent()
+        {
+            return Component;
+        }
+
         public override Image getImage()
         {
             return i;
