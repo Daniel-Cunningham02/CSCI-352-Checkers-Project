@@ -39,8 +39,9 @@ namespace CheckersProject
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            SettingsWindow s = new SettingsWindow();
+            s.Show();
             this.Close();
-
         }
     }
 }
