@@ -70,6 +70,7 @@
     <Compile Include="src\Player.cs" />
     <Compile Include="src\Pos.cs" />
     <Compile Include="src\RedPieceDecorator.cs" />
+    <Compile Include="src\ThemeFactory.cs" />
     <Page Include="Board.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
