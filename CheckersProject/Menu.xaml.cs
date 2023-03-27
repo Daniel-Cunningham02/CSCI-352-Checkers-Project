@@ -36,5 +36,11 @@ namespace CheckersProject
         {
             this.Close();
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+        }
     }
 }

@@ -70,9 +70,10 @@
     </Window.Resources>
     <Grid Background ="{DynamicResource WindowBackground}">
         <Button Style="{DynamicResource RoundedButton}" x:Name="Local_Game" Content="Local Game" Background="LightSeaGreen" HorizontalAlignment="Left" Margin="40,125,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="Local_Game_Click"/>
-        <Button Style="{DynamicResource RoundedButton}" x:Name="QuitButton" Content="Quit Program" Background="Red" HorizontalAlignment="Left" Margin="40,217,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="QuitButton_Click"/>
-        <TextBlock FontSize="36" HorizontalAlignment="Left" Margin="40,42,0,0" TextWrapping="Wrap" Text="Checkers Game" VerticalAlignment="Top" Height="43" Width="230" FontFamily="Old English Text MT" Foreground="#FFE01515"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="QuitButton" Content="Quit Program" Background="Red" HorizontalAlignment="Left" Margin="40,283,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="QuitButton_Click"/>
+        <TextBlock FontSize="36" HorizontalAlignment="Left" Margin="15,64,0,0" TextWrapping="Wrap" Text="Checkers" VerticalAlignment="Top" Height="43" Width="136" FontFamily="Old English Text MT" Foreground="#FFE01515"/>
         <Image Source="/brightBoard.png" HorizontalAlignment="Left" Height="279" Margin="302,0,0,0" VerticalAlignment="Center" Width="279"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="SettingsButton" Content="Settings" Background="LightSeaGreen" HorizontalAlignment="Left" Margin="40,204,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="SettingsButton_Click"/>
 
     </Grid>
 </Window>
