@@ -12,6 +12,8 @@ namespace CheckersProject.src
     }**/
     //int colorValue = 0;
 
+    //We need to make sure we are generating objects with this factory
+
     public interface ISquare
     {
         Board changeColor();

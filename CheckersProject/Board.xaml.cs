@@ -16,6 +16,7 @@ using CheckersProject.src;
 using System.Threading;
 using System.Linq.Expressions;
 using System.Runtime.Remoting.Channels;
+using System.ComponentModel;
 
 namespace CheckersProject
 {
@@ -27,7 +28,7 @@ namespace CheckersProject
         private bool FirstClick;
         Piece previousClick;
         Player player;
-        public Board()
+        public Board() //need to pass in the parameters for the color change
         {
             /* Start here to understand this branch*/
             InitializeComponent();
