@@ -139,15 +139,17 @@ namespace CheckersProject
             }
             else
             {
-                player.Move(new Pos(row, col), previousClick);
-                
                 FirstClick = false;
+
                 previousClickedButton.Background = Brushes.Black;
+                if(player.Move(new Pos(row, col), previousClick))
+                {
+                    player.State = (GameState)(-((int)player.State)); 
+                }
                 if(player.GetPiece(new Pos(row, col)).CheckPromotion())
                 {
                     player.GetPiece(new Pos(row, col)).updateImage(this);
                 }
-                player.State = (GameState)(-((int)player.State));
                 
             }
             

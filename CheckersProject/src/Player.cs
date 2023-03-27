@@ -253,7 +253,7 @@ namespace CheckersProject.src
             }
             p.SetValidMoves(moves);
         }
-        public void Move(Pos pos, Piece p)
+        public bool Move(Pos pos, Piece p)
         {
             bool moveFound = false;
             /* For now, this is just a really complicated swap afterwards it updates both of the images*/
@@ -292,6 +292,7 @@ namespace CheckersProject.src
 
                     temp.updateImage(B);
                     p.updateImage(B);
+                    return true;
                 }
                 else
                 {
@@ -306,8 +307,10 @@ namespace CheckersProject.src
 
                     temp.updateImage(B);
                     p.updateImage(B);
+                    return true;
                 }
             }
+            return false;
 
         }
 
