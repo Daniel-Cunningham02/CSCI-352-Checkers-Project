@@ -12,8 +12,8 @@ namespace CheckersProject.src
     enum GameState
     {
         unstarted,
-        redTurn,
-        blackTurn,
+        redTurn = -1,
+        blackTurn = 1,
         redWin,
         blackWin,
         redForfeit,
@@ -22,8 +22,10 @@ namespace CheckersProject.src
     internal class Player
     {
         private Piece[,] board = new Piece[8, 8];
-        private GameState _state;
+        private GameState state;
         readonly Board B;
+
+        public GameState State { get { return state; } set { state = value; } }
 
         public Player(Board b)
         {

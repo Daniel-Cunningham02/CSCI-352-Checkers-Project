@@ -91,7 +91,7 @@ namespace CheckersProject
             Player_1_Amount.Text = "12";
             Player_2_Amount.Text = "12";
             this.ResizeMode = ResizeMode.NoResize;
-            
+            player.State = GameState.redTurn;
         }
 
        
@@ -106,7 +106,23 @@ namespace CheckersProject
             int col = Convert.ToInt32(clicked.Name.Substring(7));
             if (FirstClick == false)
             {
+                if(player.State == GameState.redTurn && player.GetPiece(new Pos(row, col)).ToString() != "CheckersProject.src.RedPieceDecorator")
+                {
+                    return;
+                    
+                    
+                }
+                else if(player.State == GameState.blackTurn && player.GetPiece(new Pos(row, col)).ToString() != "CheckersProject.src.BlackPieceDecorator")
+                {
+                    return;
+                }
                 previousClick = player.GetPiece(new Pos(row, col));
+                FirstClick = true; //Find a way to keep the hover effect for mouse here
+                /* Uses bool FirstClick here to account for having to click twice */
+
+                clicked.Background = Hovered;
+                previousClickedButton = clicked;
+                player.CheckValidMoves(previousClick);
                 if(previousClick.ToString() != "CheckersProject.src.BlankPiece")
                 {
                     FirstClick = true; //Find a way to keep the hover effect for mouse here
@@ -131,6 +147,7 @@ namespace CheckersProject
                 {
                     player.GetPiece(new Pos(row, col)).updateImage(this);
                 }
+                player.State = (GameState)(-((int)player.State));
                 
             }
             
