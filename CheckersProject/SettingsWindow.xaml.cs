@@ -33,5 +33,12 @@ namespace CheckersProject
         {
 
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Menu m = new Menu();
+            this.Close();
+            m.Show();
+        }
     }
 }
