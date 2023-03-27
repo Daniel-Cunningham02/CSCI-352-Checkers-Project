@@ -267,6 +267,14 @@ namespace CheckersProject.src
             {
                 if(Math.Abs(pos.Row - p.Row) > 1 && Math.Abs(pos.Column - p.Column) > 1)
                 {
+                    if (board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].ToString() == "CheckersProject.src.BlackPieceDecorator")
+                    {
+                        B.Player_2_Amount.Text = (Int32.Parse(B.Player_2_Amount.Text) - 1).ToString();
+                    }
+                    else
+                    {
+                        B.Player_1_Amount.Text = (Int32.Parse(B.Player_1_Amount.Text) - 1).ToString();
+                    }
                     board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
                     board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(B);
 

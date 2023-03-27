@@ -87,6 +87,9 @@ namespace CheckersProject
 
                 }
             }
+
+            Player_1_Amount.Text = "12";
+            Player_2_Amount.Text = "12";
             this.ResizeMode = ResizeMode.NoResize;
             
         }
