@@ -103,12 +103,20 @@ namespace CheckersProject
             int col = Convert.ToInt32(clicked.Name.Substring(7));
             if (FirstClick == false)
             {
-                FirstClick = true; //Find a way to keep the hover effect for mouse here
-                /* Uses bool FirstClick here to account for having to click twice */
-                clicked.Background = Hovered;
                 previousClick = player.GetPiece(new Pos(row, col));
-                previousClickedButton = clicked;
-                player.CheckValidMoves(previousClick);
+                if(previousClick.ToString() != "CheckersProject.src.BlankPiece")
+                {
+                    FirstClick = true; //Find a way to keep the hover effect for mouse here
+                    /* Uses bool FirstClick here to account for having to click twice */
+
+                    clicked.Background = Hovered;
+                    previousClickedButton = clicked;
+                    player.CheckValidMoves(previousClick);
+                }
+                else
+                {
+                    return;
+                }
             }
             else
             {
