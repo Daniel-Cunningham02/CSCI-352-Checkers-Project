@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,11 +8,12 @@ using System.Windows.Controls;
 
 namespace CheckersProject.src
 {
+
     enum GameState
     {
         unstarted,
-        redTurn,
-        blackTurn,
+        redTurn = -1,
+        blackTurn = 1,
         redWin,
         blackWin,
         redForfeit,
@@ -20,8 +22,10 @@ namespace CheckersProject.src
     internal class Player
     {
         private Piece[,] board = new Piece[8, 8];
-        private GameState _state;
+        private GameState state;
         readonly Board B;
+
+        public GameState State { get { return state; } set { state = value; } }
 
         public Player(Board b)
         {
@@ -30,45 +34,283 @@ namespace CheckersProject.src
 
         public void CheckValidMoves(Piece p) // Started working on this and decided to do it later.
         { 
-            /*if(p.ToString() == "CheckersProject.src.BlackPieceDecorator")
+            List<Pos> moves = new List<Pos>();
+            if(p.ToString() == "CheckersProject.src.BlackPieceDecorator")
             {
                 if(p.Row + 1 < 8 && p.Row + 1 >= 0)
                 {
                     Button button;
                     if (p.Column + 1 < 8 && p.Column + 1 >= 0)
                     {
-                        Image i = p.getImageClone();
+                        /*Image i = p.getImageClone();
                         button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column + 1));
                         i.Opacity = 0.5;
-                        button.Content = i;
+                        button.Content = i;*/
+                        if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column + 1].ToString() != p.ToString())
+                        {
+                            if (p.Row + 2 < 8 && p.Row + 2 >= 0)
+                            {
+                                if (p.Column + 2 < 8 && p.Column + 2 >= 0)
+                                {
+                                    if (board[p.Row + 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
+                                    {
+                                        moves.Add(new Pos(p.Row + 2, p.Column + 2));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            moves.Add(new Pos(p.Row + 1, p.Column + 1));
+                        }
                     }
                     if (p.Column - 1 < 8 && p.Column - 1 >= 0)
                     {
-                        Image i = p.getImageClone();
+                        /*Image i = p.getImageClone();
                         button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column - 1));
                         i.Opacity = 0.5;
-                        button.Content = i;
+                        button.Content = i;*/
+                        if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column - 1].ToString() != p.ToString())
+                        {
+                            if (p.Row + 2 < 8 && p.Row + 2 >= 0)
+                            {
+                                if (p.Column - 2 < 8 && p.Column - 2 >= 0)
+                                {
+                                    if (board[p.Row + 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
+                                    {
+                                        moves.Add(new Pos(p.Row + 2, p.Column - 2));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            moves.Add(new Pos(p.Row + 1, p.Column - 1));
+                        }
                     }
                 }
-            }*/
-        }
-        public void Move(Pos pos, Piece p)
-        {
-            /* For now, this is just a really complicated swap afterwards it updates both of the images*/
-            if (p != null && board[pos.Row, pos.Column] != null)
-            {
-                Piece temp = board[pos.Row, pos.Column];
-                board[pos.Row, pos.Column] = p;
-                board[p.Row, p.Column] = temp;
-                board[p.Row, p.Column].Row = p.Row;
-                board[p.Row, p.Column].Column = p.Column;
-                temp = board[p.Row, p.Column];
-                p.Row = pos.Row;
-                p.Column = pos.Column;
-
-                temp.updateImage(B);
-                p.updateImage(B);
+                if(p.GetComponent() != null)
+                {
+                    if (p.Row - 1 < 8 && p.Row - 1 >= 0)
+                    {
+                        Button button;
+                        if (p.Column + 1 < 8 && p.Column + 1 >= 0)
+                        {
+                            /*Image i = p.getImageClone();
+                            button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column + 1));
+                            i.Opacity = 0.5;
+                            button.Content = i;*/
+                            if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column + 1].ToString() != p.ToString())
+                            {
+                                if (p.Row - 2 < 8 && p.Row - 2 >= 0)
+                                {
+                                    if (p.Column + 2 < 8 && p.Column + 2 >= 0)
+                                    {
+                                        if (board[p.Row - 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
+                                        {
+                                            moves.Add(new Pos(p.Row - 2, p.Column + 2));
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                moves.Add(new Pos(p.Row - 1, p.Column + 1));
+                            }
+                        }
+                        if (p.Column - 1 < 8 && p.Column - 1 >= 0)
+                        {
+                            /*Image i = p.getImageClone();
+                            button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column - 1));
+                            i.Opacity = 0.5;
+                            button.Content = i;*/
+                            if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column - 1].ToString() != p.ToString())
+                            {
+                                if (p.Row - 2 < 8 && p.Row - 2 >= 0)
+                                {
+                                    if (p.Column - 2 < 8 && p.Column - 2 >= 0)
+                                    {
+                                        if (board[p.Row - 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
+                                        {
+                                            moves.Add(new Pos(p.Row - 2, p.Column - 2));
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                moves.Add(new Pos(p.Row - 1, p.Column - 1));
+                            }
+                        }
+                    }
+                }
             }
+            else if(p.ToString() == "CheckersProject.src.RedPieceDecorator")
+            {
+                if (p.Row - 1 < 8 && p.Row - 1 >= 0)
+                {
+                    Button button;
+                    if (p.Column + 1 < 8 && p.Column + 1 >= 0)
+                    {
+                        /*Image i = p.getImageClone();
+                        button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column + 1));
+                        i.Opacity = 0.5;
+                        button.Content = i;*/
+                        if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column + 1].ToString() != p.ToString())
+                        {
+                            if(p.Row - 2 < 8 && p.Row - 2 >= 0)
+                            {
+                                if(p.Column + 2 < 8 && p.Column + 2 >= 0)
+                                {
+                                    if (board[p.Row - 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
+                                    {
+                                        moves.Add(new Pos(p.Row - 2, p.Column + 2));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            moves.Add(new Pos(p.Row - 1, p.Column + 1));
+                        }
+                    }
+                    if (p.Column - 1 < 8 && p.Column - 1 >= 0)
+                    {
+                        /*Image i = p.getImageClone();
+                        button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column - 1));
+                        i.Opacity = 0.5;
+                        button.Content = i;*/
+                        if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column - 1].ToString() != p.ToString())
+                        {
+                            if (p.Row - 2 < 8 && p.Row - 2 >= 0)
+                            {
+                                if (p.Column - 2 < 8 && p.Column - 2 >= 0)
+                                {
+                                    if (board[p.Row - 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
+                                    {
+                                        moves.Add(new Pos(p.Row - 2, p.Column - 2));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            moves.Add(new Pos(p.Row - 1, p.Column - 1));
+                        }
+                    }
+                }
+                if(p.GetComponent() != null)
+                {
+                    if (p.Column + 1 < 8 && p.Column + 1 >= 0)
+                    {
+                        /*Image i = p.getImageClone();
+                        button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column + 1));
+                        i.Opacity = 0.5;
+                        button.Content = i;*/
+                        if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column + 1].ToString() != p.ToString())
+                        {
+                            if (p.Row + 2 < 8 && p.Row + 2 >= 0)
+                            {
+                                if (p.Column + 2 < 8 && p.Column + 2 >= 0)
+                                {
+                                    if (board[p.Row + 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
+                                    {
+                                        moves.Add(new Pos(p.Row + 2, p.Column + 2));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            moves.Add(new Pos(p.Row + 1, p.Column + 1));
+                        }
+                    }
+                    if (p.Column - 1 < 8 && p.Column - 1 >= 0)
+                    {
+                        /*Image i = p.getImageClone();
+                        button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column - 1));
+                        i.Opacity = 0.5;
+                        button.Content = i;*/
+                        if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column - 1].ToString() != p.ToString())
+                        {
+                            if (p.Row + 2 < 8 && p.Row + 2 >= 0)
+                            {
+                                if (p.Column - 2 < 8 && p.Column - 2 >= 0)
+                                {   
+                                    if (board[p.Row + 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
+                                    {
+                                        moves.Add(new Pos(p.Row + 2, p.Column - 2));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            moves.Add(new Pos(p.Row + 1, p.Column - 1));
+                        }
+                    }
+                }
+            }
+            p.SetValidMoves(moves);
+        }
+        public bool Move(Pos pos, Piece p)
+        {
+            bool moveFound = false;
+            /* For now, this is just a really complicated swap afterwards it updates both of the images*/
+            foreach(Pos x in p.ValidMoves)
+            {
+                if (x.Row == pos.Row && x.Column == pos.Column)
+                {
+                    moveFound = true;
+                    break;
+                }
+            }
+            if (p != null && board[pos.Row, pos.Column] != null && moveFound == true)
+            {
+                if(Math.Abs(pos.Row - p.Row) > 1 && Math.Abs(pos.Column - p.Column) > 1)
+                {
+                    if (board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].ToString() == "CheckersProject.src.BlackPieceDecorator")
+                    {
+                        B.Player_2_Amount.Text = (Int32.Parse(B.Player_2_Amount.Text) - 1).ToString();
+                    }
+                    else
+                    {
+                        B.Player_1_Amount.Text = (Int32.Parse(B.Player_1_Amount.Text) - 1).ToString();
+                    }
+                    board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
+                    board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(B);
+
+                    Piece temp = board[pos.Row, pos.Column];
+                    board[pos.Row, pos.Column] = p;
+                    board[p.Row, p.Column] = temp;
+                    board[p.Row, p.Column].Row = p.Row;
+                    board[p.Row, p.Column].Column = p.Column;
+                    temp = board[p.Row, p.Column];
+                    p.Row = pos.Row;
+                    p.Column = pos.Column;
+
+
+                    temp.updateImage(B);
+                    p.updateImage(B);
+                    return true;
+                }
+                else
+                {
+                    Piece temp = board[pos.Row, pos.Column];
+                    board[pos.Row, pos.Column] = p;
+                    board[p.Row, p.Column] = temp;
+                    board[p.Row, p.Column].Row = p.Row;
+                    board[p.Row, p.Column].Column = p.Column;
+                    temp = board[p.Row, p.Column];
+                    p.Row = pos.Row;
+                    p.Column = pos.Column;
+
+                    temp.updateImage(B);
+                    p.updateImage(B);
+                    return true;
+                }
+            }
+            return false;
 
         }
 

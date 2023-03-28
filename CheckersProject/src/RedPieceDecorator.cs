@@ -20,9 +20,27 @@ namespace CheckersProject.src
         
         public override void updateImage(Board b)
         {
-            Button button = (Button)b.grid.FindName("Button" + Row.ToString() + Column.ToString());
-            button.Content = i;
+            if (Component == null)
+            {
+                Button button = (Button)b.grid.FindName("Button" + Row.ToString() + Column.ToString());
+                button.Content = i;
+            }
+            else
+            {
+                UpdateComponent();
+                Component.updateImage(b);
+            }
+        }
 
+        public override void UpdateComponent()
+        {
+            Component.Row = Row;
+            Component.Column = Column;
+        }
+
+        public override Piece GetComponent()
+        {
+            return Component;
         }
 
         public override Image getImage()
@@ -40,6 +58,24 @@ namespace CheckersProject.src
             Image image2 = new Image();
             image2.Source = i.Source;
             return image2;
+        }
+
+        public override bool CheckPromotion()
+        {
+            if (Component == null)
+            {
+                if (Row == 0)
+                {
+                    Component = new KingDecorator(null, new Pos(Row, Column), this.ToString());
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }
