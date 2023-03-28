@@ -31,6 +31,7 @@ namespace CheckersProject
         SolidColorBrush Hovered;
         public Board()
         {
+            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             /* Start here to understand this branch*/
             InitializeComponent();
             FirstClick = false;

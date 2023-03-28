@@ -21,6 +21,7 @@ namespace CheckersProject
     {
         public Menu()
         {
+            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
         }
