@@ -36,12 +36,11 @@ namespace CheckersProject.src
 
     public class Red : ISquare
     {
-        public Board changeColor()
+        public Button changeColor()
         {
             //Board b = new Board();
             //b.Background = new SolidColorBrush(Colors.Red);
-            Button b = new Button();
-            b.Background = Red(); 
+            Button b = new Button { Background = new SolidColorBrush(Colors.Blue) };  
             return b;
         }
     }
