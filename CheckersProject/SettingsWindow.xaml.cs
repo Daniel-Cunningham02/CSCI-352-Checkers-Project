@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckersProject.src;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace CheckersProject
     /// </summary>
     public partial class SettingsWindow : Window
     {
+        Factory f = new Factory();
+
         public SettingsWindow()
         {
             InitializeComponent();
@@ -26,7 +29,8 @@ namespace CheckersProject
 
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //Board b = f.GetSquare().changeColor();
+            //b.Show();
         }
 
         private void GreenButton_Click(object sender, RoutedEventArgs e)

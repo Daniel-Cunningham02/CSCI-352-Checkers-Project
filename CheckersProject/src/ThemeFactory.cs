@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace CheckersProject.src
@@ -37,8 +38,10 @@ namespace CheckersProject.src
     {
         public Board changeColor()
         {
-            Board b = new Board();
-            b.Background = new SolidColorBrush(Colors.Red);
+            //Board b = new Board();
+            //b.Background = new SolidColorBrush(Colors.Red);
+            Button b = new Button();
+            b.Background = Red(); 
             return b;
         }
     }
