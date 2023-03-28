@@ -8,9 +8,9 @@
         Title="Menu" Height="450" Width="800">
     <Window.Resources>
         <LinearGradientBrush x:Key="WindowBackground">
-            <GradientStop Offset="0" Color="Red"/>
+            <GradientStop Offset="0" Color="Blue"/>
             <GradientStop Offset=".5" Color="Bisque"/>
-            <GradientStop Offset="1" Color="Blue"/>
+            <GradientStop Offset="1" Color="Red"/>
         </LinearGradientBrush>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -69,9 +69,9 @@
         </Style>
     </Window.Resources>
     <Grid Background ="{DynamicResource WindowBackground}">
-        <Button Style="{DynamicResource RoundedButton}" x:Name="Local_Game" Content="Local Game" Background="LightSeaGreen" HorizontalAlignment="Left" Margin="40,99,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="Local_Game_Click"/>
-        <Button Style="{DynamicResource RoundedButton}" x:Name="QuitButton" Content="Quit Program" Background="Red" HorizontalAlignment="Left" Margin="40,240,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="QuitButton_Click"/>
-        <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="40,35,0,0" TextWrapping="Wrap" Text="Checkers Game" VerticalAlignment="Top" Height="30" Width="161"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="Local_Game" Content="Local Game" Background="LightSeaGreen" HorizontalAlignment="Left" Margin="40,125,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="Local_Game_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="QuitButton" Content="Quit Program" Background="Red" HorizontalAlignment="Left" Margin="40,217,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="QuitButton_Click"/>
+        <TextBlock FontSize="36" HorizontalAlignment="Left" Margin="40,42,0,0" TextWrapping="Wrap" Text="Checkers Game" VerticalAlignment="Top" Height="43" Width="230" FontFamily="Old English Text MT" Foreground="#FFE01515"/>
         <Image Source="/brightBoard.png" HorizontalAlignment="Left" Height="279" Margin="302,0,0,0" VerticalAlignment="Center" Width="279"/>
 
     </Grid>
