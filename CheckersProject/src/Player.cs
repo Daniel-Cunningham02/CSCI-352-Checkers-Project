@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace CheckersProject.src
 {
@@ -32,6 +33,25 @@ namespace CheckersProject.src
             B = b;
         }
 
+        public void HighlightValidMoves(Piece p)
+        {
+            foreach(Pos pos in p.ValidMoves)
+            {
+                Image i = p.getImageClone();
+                i.Opacity = .75;
+                ((Button)B.grid.FindName("Button" + pos.Row.ToString() + pos.Column.ToString())).Content = i;
+                
+            }
+        }
+
+        public void ResetHighlights(Piece p)
+        {
+            foreach(Pos pos in p.ValidMoves)
+            {
+                ((Button)B.grid.FindName("Button" + pos.Row.ToString() + pos.Column.ToString())).Content = new Image { Source = new BitmapImage(new Uri("/CheckerBlank.png", UriKind.Relative)) };
+            }
+        }
+
         public void CheckValidMoves(Piece p) // Started working on this and decided to do it later.
         { 
             List<Pos> moves = new List<Pos>();
@@ -39,7 +59,7 @@ namespace CheckersProject.src
             {
                 if(p.Row + 1 < 8 && p.Row + 1 >= 0)
                 {
-                    Button button;
+                    
                     if (p.Column + 1 < 8 && p.Column + 1 >= 0)
                     {
                         /*Image i = p.getImageClone();
@@ -59,7 +79,7 @@ namespace CheckersProject.src
                                 }
                             }
                         }
-                        else
+                        else if (board[p.Row + 1, p.Column + 1].ToString() == "CheckersProject.src.BlankPiece")
                         {
                             moves.Add(new Pos(p.Row + 1, p.Column + 1));
                         }
@@ -83,7 +103,7 @@ namespace CheckersProject.src
                                 }
                             }
                         }
-                        else
+                        else if (board[p.Row + 1, p.Column - 1].ToString() == "CheckersProject.src.BlankPiece")
                         {
                             moves.Add(new Pos(p.Row + 1, p.Column - 1));
                         }
@@ -93,7 +113,7 @@ namespace CheckersProject.src
                 {
                     if (p.Row - 1 < 8 && p.Row - 1 >= 0)
                     {
-                        Button button;
+                        
                         if (p.Column + 1 < 8 && p.Column + 1 >= 0)
                         {
                             /*Image i = p.getImageClone();
@@ -113,7 +133,7 @@ namespace CheckersProject.src
                                     }
                                 }
                             }
-                            else
+                            else if(board[p.Row - 1, p.Column + 1].ToString() == "CheckersProject.src.BlankPiece")
                             {
                                 moves.Add(new Pos(p.Row - 1, p.Column + 1));
                             }
@@ -137,7 +157,7 @@ namespace CheckersProject.src
                                     }
                                 }
                             }
-                            else
+                            else if(board[p.Row - 1, p.Column - 1].ToString() == "CheckersProject.src.BlankPiece")
                             {
                                 moves.Add(new Pos(p.Row - 1, p.Column - 1));
                             }
@@ -149,7 +169,6 @@ namespace CheckersProject.src
             {
                 if (p.Row - 1 < 8 && p.Row - 1 >= 0)
                 {
-                    Button button;
                     if (p.Column + 1 < 8 && p.Column + 1 >= 0)
                     {
                         /*Image i = p.getImageClone();
@@ -169,7 +188,7 @@ namespace CheckersProject.src
                                 }
                             }
                         }
-                        else
+                        else if(board[p.Row - 1, p.Column + 1].ToString() == "CheckersProject.src.BlankPiece")
                         {
                             moves.Add(new Pos(p.Row - 1, p.Column + 1));
                         }
@@ -193,7 +212,7 @@ namespace CheckersProject.src
                                 }
                             }
                         }
-                        else
+                        else if((board[p.Row - 1, p.Column - 1].ToString() == "CheckersProject.src.BlankPiece"))
                         {
                             moves.Add(new Pos(p.Row - 1, p.Column - 1));
                         }
@@ -220,7 +239,7 @@ namespace CheckersProject.src
                                 }
                             }
                         }
-                        else
+                        else if(board[p.Row + 1, p.Column + 1].ToString() == "CheckersProject.src.BlankPiece")
                         {
                             moves.Add(new Pos(p.Row + 1, p.Column + 1));
                         }
@@ -244,7 +263,7 @@ namespace CheckersProject.src
                                 }
                             }
                         }
-                        else
+                        else if (board[p.Row + 1, p.Column - 1].ToString() == "CheckersProject.src.BlankPiece")
                         {
                             moves.Add(new Pos(p.Row + 1, p.Column - 1));
                         }
@@ -255,6 +274,7 @@ namespace CheckersProject.src
         }
         public bool Move(Pos pos, Piece p)
         {
+            ResetHighlights(p);
             bool moveFound = false;
             /* For now, this is just a really complicated swap afterwards it updates both of the images*/
             foreach(Pos x in p.ValidMoves)

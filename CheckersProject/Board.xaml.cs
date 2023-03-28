@@ -132,6 +132,7 @@ namespace CheckersProject
                     clicked.Background = Hovered;
                     previousClickedButton = clicked;
                     player.CheckValidMoves(previousClick);
+                    player.HighlightValidMoves(previousClick);
                 }
                 else
                 {
@@ -145,7 +146,18 @@ namespace CheckersProject
                 previousClickedButton.Background = Brushes.Black;
                 if(player.Move(new Pos(row, col), previousClick))
                 {
-                    player.State = (GameState)(-((int)player.State)); 
+                    if(Int32.Parse(Player_1_Amount.Text) != 0 && Int32.Parse(Player_2_Amount.Text) != 0)
+                    {
+                        player.State = (GameState)(-((int)player.State));
+                    }
+                    else if(Int32.Parse(Player_1_Amount.Text) == 0)
+                    {
+                        player.State = GameState.blackWin;
+                    }
+                    else
+                    {
+                        player.State = GameState.redWin;
+                    }
                 }
                 if(player.GetPiece(new Pos(row, col)).CheckPromotion())
                 {
@@ -153,7 +165,30 @@ namespace CheckersProject
                 }
                 
             }
-            
+            CheckWin();
+        }
+
+        private void CheckWin()
+        {
+            if(player.State == GameState.blackWin)
+            {
+                MessageBox.Show("Congrats! Blue wins!");
+                Menu m = new Menu();
+                this.Close();
+                m.Show();
+            }
+            else if(player.State == GameState.redWin)
+            {
+                // Finish here
+                MessageBox.Show("Congrats! Red wins!");
+                Menu m = new Menu();
+                this.Close();
+                m.Show();
+            }
+            else
+            {
+                return;
+            }
         }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
