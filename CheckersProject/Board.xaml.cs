@@ -29,16 +29,21 @@ namespace CheckersProject
         Button previousClickedButton;
         Player player;
         SolidColorBrush Hovered;
-        public Board()
+        public Board(GameType type)
         {
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             /* Start here to understand this branch*/
             InitializeComponent();
             FirstClick = false;
             Hovered = new SolidColorBrush(Color.FromRgb(50, 255, 50));
-
-            player = new Player(this); // Have to pass in this because the player class takes in a Board object as a parameter
-            for(int i = 0; i < 8; i++)
+            if(type == GameType.LAN)
+            {
+                player = new LANPlayer(this);// Have to pass in this because the player class takes in a Board object as a parameter
+            }
+            else if (type == GameType.Multiplayer) {
+                
+            }
+            for (int i = 0; i < 8; i++)
             {
                 for(int j = 0; j < 8; j++)
                 {

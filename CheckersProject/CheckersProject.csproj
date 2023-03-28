@@ -62,7 +62,10 @@
     <Compile Include="src\ABSPieceDecorator.cs" />
     <Compile Include="src\BlankPiece.cs" />
     <Compile Include="src\BlackPieceDecorator.cs" />
+    <Compile Include="src\Host.cs" />
+    <Compile Include="src\JoinedPlayer.cs" />
     <Compile Include="src\KingDecorator.cs" />
+    <Compile Include="src\LANPlayer.cs" />
     <Compile Include="src\Piece.cs" />
     <Compile Include="src\Player.cs" />
     <Compile Include="src\Pos.cs" />

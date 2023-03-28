@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckersProject.src;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace CheckersProject
 
         private void Local_Game_Click(object sender, RoutedEventArgs e)
         {
-            Board b = new Board();
+            Board b = new Board(GameType.LAN);
             this.Close();
             b.Show();
         }
