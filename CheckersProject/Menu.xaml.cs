@@ -33,6 +33,13 @@ namespace CheckersProject
             this.Close();
             b.Show();
         }
+        
+        private void Multiplayer_Game_Click(object sender, RoutedEventArgs e)
+        {
+            Board b = new Board(GameType.Multiplayer);
+            this.Close();
+            
+        }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {

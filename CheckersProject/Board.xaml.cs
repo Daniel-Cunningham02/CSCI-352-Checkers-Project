@@ -25,10 +25,13 @@ namespace CheckersProject
     public partial class Board : Window
     {
         private bool FirstClick;
-        Piece previousClick;
-        Button previousClickedButton;
-        Player player;
-        SolidColorBrush Hovered;
+        private Piece previousClick;
+        private Button previousClickedButton;
+        private Player player;
+        private SolidColorBrush Hovered;
+        private Thread GetPlayerThread;
+
+
         public Board(GameType type)
         {
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
@@ -36,68 +39,75 @@ namespace CheckersProject
             InitializeComponent();
             FirstClick = false;
             Hovered = new SolidColorBrush(Color.FromRgb(50, 255, 50));
-            if(type == GameType.LAN)
+            if (type == GameType.LAN)
             {
                 player = new LANPlayer(this);// Have to pass in this because the player class takes in a Board object as a parameter
             }
-            else if (type == GameType.Multiplayer) {
-                
-            }
-            for (int i = 0; i < 8; i++)
+            else if (type == GameType.Multiplayer)
             {
-                for(int j = 0; j < 8; j++)
+                MultiplayerMenu multiMenu = new MultiplayerMenu(); // TODO: Problems getting Player Type
+                GetPlayerThread = new Thread(new ThreadStart(multiMenu.Show));
+                GetPlayerThread.Start();
+                multiMenu.Focus();
+            }
+            if(GetPlayerThread.ThreadState == ThreadState.Stopped) {
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((i + j) % 2 == 1)
+                    for (int j = 0; j < 8; j++)
                     {
-                        // Creates button and adds it to the grid along with its color.
-                        Button button = new Button {
-                            Name = ("Button" + i.ToString() + j.ToString()),
-                            Background = Brushes.Black,
-                        };
-                        RegisterName(button.Name, button); /* Have to register the name with the button because they aren't bound
-                        automatically when created programmatically. Name is later used to access the button and its content(piece image).*/
-                        button.Click += new RoutedEventHandler(Move_Button_Click); // Creates new EventHandler for the button because there is not a handler made automatically.
-                        Grid.SetRow(button, i);
-                        Grid.SetColumn(button, j);
-                        grid.Children.Add(button);
+                        if ((i + j) % 2 == 1)
+                        {
+                            // Creates button and adds it to the grid along with its color.
+                            Button button = new Button
+                            {
+                                Name = ("Button" + i.ToString() + j.ToString()),
+                                Background = Brushes.Black,
+                            };
+                            RegisterName(button.Name, button); /* Have to register the name with the button because they aren't bound
+                                automatically when created programmatically. Name is later used to access the button and its content(piece image).*/
+                            button.Click += new RoutedEventHandler(Move_Button_Click); // Creates new EventHandler for the button because there is not a handler made automatically.
+                            Grid.SetRow(button, i);
+                            Grid.SetColumn(button, j);
+                            grid.Children.Add(button);
 
-                        Pos pos = new Pos(i, j);
-                        if (i < 3)  // Different pieces are created depending upon their position on the board
-                        {
-                            BlackPieceDecorator piece = new BlackPieceDecorator(null, pos); 
-                            player.SetPiece(pos, piece); // Sets the piece in the 2D array and updates the button's content(image) on the grid.
-                        }
-                        else if(i > 4)
-                        {
-                            RedPieceDecorator piece = new RedPieceDecorator(null, pos);
-                            player.SetPiece(pos, piece);
+                            Pos pos = new Pos(i, j);
+                            if (i < 3)  // Different pieces are created depending upon their position on the board
+                            {
+                                BlackPieceDecorator piece = new BlackPieceDecorator(null, pos);
+                                player.SetPiece(pos, piece); // Sets the piece in the 2D array and updates the button's content(image) on the grid.
+                            }
+                            else if (i > 4)
+                            {
+                                RedPieceDecorator piece = new RedPieceDecorator(null, pos);
+                                player.SetPiece(pos, piece);
+                            }
+                            else
+                            {
+                                BlankPiece piece = new BlankPiece(null, new Pos(i, j)); // Blank piece is used as a placeholder for place where the pieces can move.
+                                player.SetPiece(pos, piece);
+                            }
                         }
                         else
                         {
-                            BlankPiece piece = new BlankPiece(null, new Pos(i, j)); // Blank piece is used as a placeholder for place where the pieces can move.
-                            player.SetPiece(pos, piece);
+                            // Creating button here too not for functionality but for styling.
+                            Button button = new Button
+                            {
+                                Background = Brushes.Red
+                            };
+
+                            Grid.SetRow(button, i);
+                            Grid.SetColumn(button, j);
+                            grid.Children.Add(button);
                         }
-                    }
-                    else
-                    {
-                        // Creating button here too not for functionality but for styling.
-                        Button button = new Button
-                        {
-                            Background = Brushes.Red
-                        };
-               
-                        Grid.SetRow(button, i);
-                        Grid.SetColumn(button, j);
-                        grid.Children.Add(button);
-                    }
 
+                    }
                 }
-            }
 
-            Player_1_Amount.Text = "12";
-            Player_2_Amount.Text = "12";
-            this.ResizeMode = ResizeMode.NoResize;
-            player.State = GameState.redTurn;
+                Player_1_Amount.Text = "12";
+                Player_2_Amount.Text = "12";
+                this.ResizeMode = ResizeMode.NoResize;
+                player.State = GameState.redTurn;
+            }
         }
 
        
