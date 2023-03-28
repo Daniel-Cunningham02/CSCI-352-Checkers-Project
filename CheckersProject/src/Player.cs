@@ -46,7 +46,7 @@ namespace CheckersProject.src
                         button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column + 1));
                         i.Opacity = 0.5;
                         button.Content = i;*/
-                        if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece")
+                        if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column + 1].ToString() != p.ToString())
                         {
                             if (p.Row + 2 < 8 && p.Row + 2 >= 0)
                             {
@@ -70,7 +70,7 @@ namespace CheckersProject.src
                         button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column - 1));
                         i.Opacity = 0.5;
                         button.Content = i;*/
-                        if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece")
+                        if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column - 1].ToString() != p.ToString())
                         {
                             if (p.Row + 2 < 8 && p.Row + 2 >= 0)
                             {
@@ -100,7 +100,7 @@ namespace CheckersProject.src
                             button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column + 1));
                             i.Opacity = 0.5;
                             button.Content = i;*/
-                            if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece")
+                            if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column + 1].ToString() != p.ToString())
                             {
                                 if (p.Row - 2 < 8 && p.Row - 2 >= 0)
                                 {
@@ -124,7 +124,7 @@ namespace CheckersProject.src
                             button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column - 1));
                             i.Opacity = 0.5;
                             button.Content = i;*/
-                            if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece")
+                            if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column - 1].ToString() != p.ToString())
                             {
                                 if (p.Row - 2 < 8 && p.Row - 2 >= 0)
                                 {
@@ -156,7 +156,7 @@ namespace CheckersProject.src
                         button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column + 1));
                         i.Opacity = 0.5;
                         button.Content = i;*/
-                        if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece")
+                        if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column + 1].ToString() != p.ToString())
                         {
                             if(p.Row - 2 < 8 && p.Row - 2 >= 0)
                             {
@@ -180,7 +180,7 @@ namespace CheckersProject.src
                         button = (Button)B.grid.FindName("Button" + (p.Row - 1) + (p.Column - 1));
                         i.Opacity = 0.5;
                         button.Content = i;*/
-                        if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece")
+                        if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column - 1].ToString() != p.ToString())
                         {
                             if (p.Row - 2 < 8 && p.Row - 2 >= 0)
                             {
@@ -207,7 +207,7 @@ namespace CheckersProject.src
                         button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column + 1));
                         i.Opacity = 0.5;
                         button.Content = i;*/
-                        if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece")
+                        if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column + 1].ToString() != p.ToString())
                         {
                             if (p.Row + 2 < 8 && p.Row + 2 >= 0)
                             {
@@ -231,7 +231,7 @@ namespace CheckersProject.src
                         button = (Button)B.grid.FindName("Button" + (p.Row + 1) + (p.Column - 1));
                         i.Opacity = 0.5;
                         button.Content = i;*/
-                        if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece")
+                        if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column - 1].ToString() != p.ToString())
                         {
                             if (p.Row + 2 < 8 && p.Row + 2 >= 0)
                             {
