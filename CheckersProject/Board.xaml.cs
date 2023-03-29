@@ -28,7 +28,7 @@ namespace CheckersProject
         private bool FirstClick;
         Piece previousClick;
         Player player;
-        public Board() //Button b //need to pass in the parameters for the color change
+        public Board(Button b) //need to pass in the parameters for the color change
         {
             /* Start here to understand this branch*/
             InitializeComponent();
@@ -73,12 +73,12 @@ namespace CheckersProject
                     else
                     {
                         // Creating button here too not for functionality but for styling.
-                        Button button = new Button
+                        /**Button button = new Button
                         {
                             Background = Brushes.Red
-                        };
-                        //Button button = new Button(); //the problem here might be that the same button is being used
-                        //button = b;
+                        };**/
+                        Button button = new Button(); //the problem here might be that the same button is being used
+                        button.Background = b.Background;
                
                         Grid.SetRow(button, i);
                         Grid.SetColumn(button, j);
