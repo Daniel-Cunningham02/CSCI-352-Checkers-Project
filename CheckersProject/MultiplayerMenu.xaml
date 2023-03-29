@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckersProject"
         mc:Ignorable="d"
-        Title="Multiplayer" Height="250" Width="250">
+        Title="Multiplayer" Height="300" Width="250">
     <Grid>
-        <Button x:Name="Host" FontSize="18" Margin="40,97,140,83" Content="Host" Click="Host_Click"></Button>
-        <Button x:Name="Join" FontSize="18" Margin="146,97,34,83" Content="Join" Click="Join_Click"></Button>
+        <TextBox x:Name="Ip" FontSize="18" Margin="50,61,50,172" Text="127.0.0.1:8080" TextAlignment="Center" TextChanged="Ip_TextChanged"></TextBox>
+        <Button x:Name="Host" FontSize="18" Margin="90,173,90,60" Content="Host" Click="Host_Click"></Button>
+        <Button x:Name="Join" FontSize="18" Margin="90,117,90,116" Content="Join" Click="Join_Click"></Button>
     </Grid>
 </Window>

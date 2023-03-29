@@ -12,7 +12,8 @@ namespace CheckersProject.src
     public enum GameType
     {
         LAN,
-        Multiplayer
+        MultiplayerHost,
+        MultiplayerJoin,
     }
 
     public enum GameState

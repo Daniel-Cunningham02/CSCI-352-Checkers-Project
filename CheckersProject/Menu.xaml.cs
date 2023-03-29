@@ -36,7 +36,8 @@ namespace CheckersProject
         
         private void Multiplayer_Game_Click(object sender, RoutedEventArgs e)
         {
-            Board b = new Board(GameType.Multiplayer);
+            MultiplayerMenu multiMenu = new MultiplayerMenu();
+            multiMenu.Show();
             this.Close();
             
         }
