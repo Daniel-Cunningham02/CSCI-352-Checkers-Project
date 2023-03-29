@@ -28,7 +28,7 @@ namespace CheckersProject
         private bool FirstClick;
         Piece previousClick;
         Player player;
-        public Board() //need to pass in the parameters for the color change
+        public Board() //Button b //need to pass in the parameters for the color change
         {
             /* Start here to understand this branch*/
             InitializeComponent();
@@ -77,6 +77,8 @@ namespace CheckersProject
                         {
                             Background = Brushes.Red
                         };
+                        //Button button = new Button(); 
+                        //button = b;
                
                         Grid.SetRow(button, i);
                         Grid.SetColumn(button, j);

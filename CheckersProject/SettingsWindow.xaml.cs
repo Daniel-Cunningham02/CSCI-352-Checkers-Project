@@ -29,8 +29,11 @@ namespace CheckersProject
 
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
-            //Board b = f.GetSquare().changeColor();
-            //b.Show();
+            //Button b = f.GetBlueSquare().changeColor();
+            Board board = new Board();
+            this.Close();
+            board.Show();
+            
         }
 
         private void GreenButton_Click(object sender, RoutedEventArgs e)

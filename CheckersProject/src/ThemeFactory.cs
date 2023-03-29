@@ -17,30 +17,31 @@ namespace CheckersProject.src
 
     public interface ISquare
     {
-        Board changeColor();
+        Button changeColor();
     }
 
     public interface SquareFactory
     {
-        ISquare GetSquare();
+        ISquare GetBlueSquare();
     }
 
     public class Factory : SquareFactory
     {
-        public ISquare GetSquare()
+        public ISquare GetBlueSquare()
         {
-            ISquare Red = new Red();
-            return Red;
+            ISquare Blue = new Blue();
+            return Blue;
         }
     }
 
-    public class Red : ISquare
+    public class Blue : ISquare
     {
         public Button changeColor()
         {
             //Board b = new Board();
             //b.Background = new SolidColorBrush(Colors.Red);
             Button b = new Button { Background = new SolidColorBrush(Colors.Blue) };  
+            //Button b2 = new Button { Background}
             return b;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckersProject.src;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace CheckersProject
     /// </summary>
     public partial class Menu : Window
     {
+        Factory f = new Factory();
         public Menu()
         {
             InitializeComponent();
@@ -27,9 +29,10 @@ namespace CheckersProject
 
         private void Local_Game_Click(object sender, RoutedEventArgs e)
         {
-            Board b = new Board();
+            //Button b = f.GetBlueSquare().changeColor();
+            Board board = new Board();
             this.Close();
-            b.Show();
+            board.Show();
         }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
