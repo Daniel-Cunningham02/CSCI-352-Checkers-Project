@@ -77,7 +77,7 @@ namespace CheckersProject
                         {
                             Background = Brushes.Red
                         };
-                        //Button button = new Button(); 
+                        //Button button = new Button(); //the problem here might be that the same button is being used
                         //button = b;
                
                         Grid.SetRow(button, i);
