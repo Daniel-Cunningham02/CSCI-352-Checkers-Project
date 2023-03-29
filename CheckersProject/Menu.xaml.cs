@@ -29,7 +29,7 @@ namespace CheckersProject
 
         private void Local_Game_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetBlueSquare().changeColor();
+            Button b = f.GetRedSquare().changeColor();
             Board board = new Board(b);
             this.Close();
             board.Show();

@@ -23,6 +23,8 @@ namespace CheckersProject.src
     public interface SquareFactory
     {
         ISquare GetBlueSquare();
+        ISquare GetRedSquare();
+        ISquare GetPurpleSquare();
     }
 
     public class Factory : SquareFactory
@@ -32,16 +34,40 @@ namespace CheckersProject.src
             ISquare Blue = new Blue();
             return Blue;
         }
+        public ISquare GetRedSquare()
+        {
+            ISquare Red = new Red();
+            return Red;
+        }
+        public ISquare GetPurpleSquare()
+        {
+            ISquare Purple = new Purple();
+            return Purple;
+        }
     }
 
     public class Blue : ISquare
     {
         public Button changeColor()
         {
-            //Board b = new Board();
-            //b.Background = new SolidColorBrush(Colors.Red);
             Button b = new Button { Background = new SolidColorBrush(Colors.Blue) };  
-            //Button b2 = new Button { Background}
+            return b;
+        }
+    }
+    public class Red : ISquare
+    {
+        public Button changeColor()
+        {
+            Button b = new Button { Background = new SolidColorBrush(Colors.Red) };
+            return b;
+        }
+    }
+
+    public class Purple : ISquare
+    {
+        public Button changeColor()
+        {
+            Button b = new Button { Background = new SolidColorBrush(Colors.Purple) };
             return b;
         }
     }
