@@ -69,10 +69,11 @@
         </Style>
     </Window.Resources>
     <Grid Background ="{DynamicResource WindowBackground}">
-        <Button Style="{DynamicResource RoundedButton}" x:Name="RedThemeButton" Content="Red/Blue" Background="MediumPurple" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="RedButton_Click"/>
-        <Button Style="{DynamicResource RoundedButton}" x:Name="GreenThemeButton" Content="Green/White" Background="LightGreen" HorizontalAlignment="Left" Margin="33,183,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="GreenButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="RedThemeButton" Content="Red" Background="Red" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="RedButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="BlueThemeButton" Content="Blue" Background="Blue" HorizontalAlignment="Left" Margin="33,183,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="BlueButton_Click"/>
         <Button Style="{DynamicResource RoundedButton}" x:Name="ExitButton" Content="Return" Background="RED" HorizontalAlignment="Left" Margin="284,24,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="ExitButton_Click"/>
         <TextBlock FontSize="36" HorizontalAlignment="Left" Margin="22,32,0,0" TextWrapping="Wrap" Text="Themes" VerticalAlignment="Top" Height="43" Width="136" FontFamily="Old English Text MT" Foreground="#FFE01515"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="BlueThemeButton_Copy" Content="Purple" Background="MediumPurple" HorizontalAlignment="Left" Margin="33,268,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="PurpleButton_Click"/>
 
     </Grid>
 </Window>

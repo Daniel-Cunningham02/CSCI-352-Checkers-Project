@@ -29,16 +29,19 @@ namespace CheckersProject
 
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetBlueSquare().changeColor();
+            Button b = f.GetRedSquare().changeColor();
             Board board = new Board(b);
             this.Close();
             board.Show();
             
         }
 
-        private void GreenButton_Click(object sender, RoutedEventArgs e)
+        private void BlueButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Button b = f.GetBlueSquare().changeColor();
+            Board board = new Board(b);
+            this.Close();
+            board.Show();
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -46,6 +49,15 @@ namespace CheckersProject
             Menu m = new Menu();
             this.Close();
             m.Show();
+        }
+
+        private void PurpleButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = f.GetPurpleSquare().changeColor();
+            Board board = new Board(b);
+            this.Close();
+            board.Show();
+
         }
     }
 }
