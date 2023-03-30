@@ -406,6 +406,7 @@ namespace CheckersProject.src
         {
             sw.WriteLine("Move " + p.Row + " " + p.Column + " " + pos.Row + " " + pos.Column);
             sw.WriteLine("GameStateSwap");
+            sw.Flush();
         }
     }
 }
