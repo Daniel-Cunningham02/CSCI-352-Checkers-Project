@@ -234,7 +234,7 @@ namespace CheckersProject.src
             }
             p.SetValidMoves(moves);
         }
-        override public bool Move(Pos pos, Piece p)
+        override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove)
         {
 
             bool moveFound = false;
@@ -264,7 +264,6 @@ namespace CheckersProject.src
             {
                 if (Math.Abs(pos.Row - p.Row) > 1 && Math.Abs(pos.Column - p.Column) > 1)
                 {
-                    Notify(pos, p); // Notifying that a move is happening
                     if (Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].ToString() == "CheckersProject.src.BlackPieceDecorator")
                     {
                         Window.Player_2_Amount.Text = (Int32.Parse(Window.Player_2_Amount.Text) - 1).ToString();
@@ -272,6 +271,10 @@ namespace CheckersProject.src
                     else
                     {
                         Window.Player_1_Amount.Text = (Int32.Parse(Window.Player_1_Amount.Text) - 1).ToString();
+                    }
+                    if(IsIncomingNetworkMove == false)
+                    {
+                        Notify(pos, p);
                     }
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(Window);
@@ -292,7 +295,10 @@ namespace CheckersProject.src
                 }
                 else
                 {
-                    Notify(pos, p); // Notifying that a move is happening
+                    if (IsIncomingNetworkMove == false)
+                    {
+                        Notify(pos, p);
+                    }
                     Piece temp = Board[pos.Row, pos.Column];
                     Board[pos.Row, pos.Column] = p;
                     Board[p.Row, p.Column] = temp;

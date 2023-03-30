@@ -164,7 +164,7 @@ namespace CheckersProject
                 FirstClick = false;
 
                 previousClickedButton.Background = Brushes.Black;
-                if(player.Move(new Pos(row, col), previousClick))
+                if (player.Move(new Pos(row, col), previousClick, false))
                 {
                     if(Int32.Parse(Player_1_Amount.Text) != 0 && Int32.Parse(Player_2_Amount.Text) != 0)
                     {

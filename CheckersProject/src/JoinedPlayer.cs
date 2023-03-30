@@ -29,6 +29,7 @@ namespace CheckersProject.src
             {
                 ':'
             };
+            cm = new CmdManager();
             string[] address = IP.Split(split, 2);
             client = new TcpClient();
             Port = Int32.Parse(address[1]);
@@ -52,18 +53,9 @@ namespace CheckersProject.src
         {
             while(client.Connected)
             {
-                MessageBox.Show("Listening on " + client.GetStream());
                 string inData = sr.ReadLine();
-                if(inData == null)
-                {
-                    continue;
-                }
                 CmdType type = cm.RegisterCommand(ref inData);
                 MessageBox.Show(type.ToString());
-                if (type == CmdType.None)
-                {
-                    continue;
-                }
                 if (type == CmdType.Move)
                 {
                     int rowStart = Int32.Parse(inData.Substring(0, inData.IndexOf(" ")));// Takes RowStart
@@ -72,7 +64,7 @@ namespace CheckersProject.src
                     inData = inData.Substring(inData.IndexOf(" ") + 1); // Trims the string down to {rowEnd} {colEnd}
                     int rowEnd = Int32.Parse(inData.Substring(0, inData.IndexOf(" ")));// Takes RowStart
                     inData = inData.Substring(inData.IndexOf(" ") + 1); // Trims the string down to "{colStart} {rowEnd} {colEnd}"
-                    int colEnd = Int32.Parse(inData.Substring(0, inData.IndexOf(" "))); // Takes colStart
+                    int colEnd = Int32.Parse(inData); // Takes colStart
                     MessageBox.Show("Move " + rowStart + colStart + " to " + rowEnd + colEnd);
                     Pos pos = new Pos(rowEnd, colEnd);
                     Piece piece = Board[rowStart, colStart];
@@ -81,10 +73,12 @@ namespace CheckersProject.src
                 }
                 else if (type == CmdType.Forfeit)
                 {
+                    client.Close();
                     this.Close();
                 }
                 else if (type == CmdType.Leave)
                 {
+                    client.Close();
                     this.Close();
                 }
             }
@@ -296,7 +290,7 @@ namespace CheckersProject.src
             }
             p.SetValidMoves(moves);
         }
-        override public bool Move(Pos pos, Piece p)
+        override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove)
         {
 
             bool moveFound = false;
@@ -328,6 +322,10 @@ namespace CheckersProject.src
                     else
                     {
                         Window.Player_1_Amount.Text = (Int32.Parse(Window.Player_1_Amount.Text) - 1).ToString();
+                    }
+                    if(IsIncomingNetworkMove == false)
+                    {
+
                     }
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(Window);
@@ -384,6 +382,11 @@ namespace CheckersProject.src
             sw.Close();
             sr.Close();
             Read.Join();
+        }
+
+        public void SendData(object pos, object p)
+        {
+
         }
     }
 }

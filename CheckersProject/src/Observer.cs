@@ -27,8 +27,10 @@ namespace CheckersProject.src
         CmdManager cm;
 
         public Observer() {
+            cm = new CmdManager();
             ip = Dns.GetHostAddresses(Environment.MachineName)[1];
             listener = new TcpListener(ip, 0);
+            listener.Start();
             ServerThread = new Thread(new ThreadStart(Listen));
             ServerThread.Start();
         }
@@ -40,7 +42,7 @@ namespace CheckersProject.src
             while (Client.Connected)
             {
                 req = sr.ReadLine();
-                
+
                 CmdType type = cm.RegisterCommand(ref req);
                 if(type == CmdType.None)
                 {
@@ -73,7 +75,6 @@ namespace CheckersProject.src
 
         public void Listen()
         {
-            listener.Start();
             while (Client == null)
             {
                 TcpClient client = listener.AcceptTcpClient();
@@ -82,7 +83,6 @@ namespace CheckersProject.src
                 string data = sr.ReadLine();
                 if (cm.RegisterCommand(ref data) == CmdType.Connect)
                 {
-                    sw.WriteLine(data);
                     Client = client;
                 }
             }
@@ -92,7 +92,7 @@ namespace CheckersProject.src
 
         public void Update(Pos pos, Piece piece)
         {
-            p.Move(pos, piece);
+            p.Move(pos, piece, true);
         }
 
         public void Publish(Pos pos, Piece piece)
@@ -112,7 +112,7 @@ namespace CheckersProject.src
         public void Close()
         {
             listener.Stop();
-            ServerThread.Abort();
+            ServerThread.Join();
             if (sw != null)
             {
                 sw.WriteLine("Leave");
