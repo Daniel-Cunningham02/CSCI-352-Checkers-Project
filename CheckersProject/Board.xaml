@@ -30,6 +30,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
         </Grid>
+        <TextBlock x:Name="Ip" Text="Ip:" HorizontalAlignment="Left" Margin="481,23,0,605" Height="56" Width="160"/>
         <Button x:Name="Quit_Button" Content="Quit Game" Background="Red" HorizontalAlignment="Left" Margin="664,23,0,0" VerticalAlignment="Top" Height="56" Width="104" Click="Quit_Button_Click"/>
         <TextBlock x:Name="Player_1_Pieces" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="481,427,0,0" TextWrapping="Wrap" Text="Player 1 Pieces" VerticalAlignment="Top" Width="140"/>
         <TextBlock x:Name="Player_2_Pieces" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="481,187,0,0" TextWrapping="Wrap" Text="Player 2 Pieces " VerticalAlignment="Top" Width="140"/>

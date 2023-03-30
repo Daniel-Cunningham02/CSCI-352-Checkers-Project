@@ -34,7 +34,6 @@ namespace CheckersProject
             Board b = new Board(GameType.MultiplayerHost, "");
             b.Show();
             this.Close();
-            b.ShowIP();
             
         }
 

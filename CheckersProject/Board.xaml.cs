@@ -47,7 +47,9 @@ namespace CheckersProject
             else if(type == GameType.MultiplayerHost)
             {
                 player = new Host(this);
-                
+                Ip.Text = "Ip " + ((Host)player).getObs().IP;
+
+
             }
             else if(type == GameType.MultiplayerJoin)
             {
@@ -114,12 +116,6 @@ namespace CheckersProject
             {
                 ((JoinedPlayer)player).Connect();
             }
-        }
-
-
-        public void ShowIP()
-        {
-            MessageBox.Show("Tell other user to connect to: " + ((Host)player).getObs().IP);
         }
 
        
