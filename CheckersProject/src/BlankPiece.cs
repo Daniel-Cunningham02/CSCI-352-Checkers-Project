@@ -21,8 +21,12 @@ namespace CheckersProject.src
 
         public override void updateImage(Board b)
         {
-            Button button = (Button)b.grid.FindName("Button" + Row.ToString() + Column.ToString());
-            button.Content = i;
+            String buttonName = "Button" + Row.ToString() + Column.ToString();
+            b.Dispatcher.Invoke(new Action(() =>
+            {
+                Button button = (Button)b.grid.FindName(buttonName);
+                button.Content = i;
+            }));
         }
 
         public override Image getImage()

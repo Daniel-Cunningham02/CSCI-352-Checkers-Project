@@ -22,8 +22,12 @@ namespace CheckersProject.src
         {
             if (Component == null)
             {
-                Button button = (Button)b.grid.FindName("Button" + Row.ToString() + Column.ToString());
-                button.Content = i;
+                String buttonName = "Button" + Row.ToString() + Column.ToString();
+                b.Dispatcher.Invoke(new Action(() =>
+                {
+                    Button button = (Button)b.grid.FindName(buttonName);
+                    button.Content = i;
+                }));
             }
             else
             {

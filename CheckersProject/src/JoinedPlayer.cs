@@ -20,6 +20,7 @@ namespace CheckersProject.src
         StreamWriter sw;
         StreamReader sr;
         Thread Read;
+        Thread Write;
         CmdManager cm;
         int Port;
         string ip;
@@ -55,7 +56,6 @@ namespace CheckersProject.src
             {
                 string inData = sr.ReadLine();
                 CmdType type = cm.RegisterCommand(ref inData);
-                MessageBox.Show(type.ToString());
                 if (type == CmdType.Move)
                 {
                     int rowStart = Int32.Parse(inData.Substring(0, inData.IndexOf(" ")));// Takes RowStart
@@ -65,10 +65,9 @@ namespace CheckersProject.src
                     int rowEnd = Int32.Parse(inData.Substring(0, inData.IndexOf(" ")));// Takes RowStart
                     inData = inData.Substring(inData.IndexOf(" ") + 1); // Trims the string down to "{colStart} {rowEnd} {colEnd}"
                     int colEnd = Int32.Parse(inData); // Takes colStart
-                    MessageBox.Show("Move " + rowStart + colStart + " to " + rowEnd + colEnd);
                     Pos pos = new Pos(rowEnd, colEnd);
                     Piece piece = Board[rowStart, colStart];
-                    Move(pos, piece);
+                    Move(pos, piece, true);
                     
                 }
                 else if (type == CmdType.Forfeit)
@@ -98,7 +97,14 @@ namespace CheckersProject.src
         {
             foreach (Pos pos in p.ValidMoves)
             {
-                ((Button)grid.FindName("Button" + pos.Row.ToString() + pos.Column.ToString())).Content = new Image { Source = new BitmapImage(new Uri("/CheckerBlank.png", UriKind.Relative)) };
+                grid.Dispatcher.Invoke(() =>
+                {
+                    ((Button)grid.FindName("Button" + pos.Row.ToString() + pos.Column.ToString())).Content = new Image
+                    {
+                        Source = new BitmapImage(new Uri("/CheckerBlank.png", UriKind.Relative))
+                    };
+                });
+                
             }
         }
 
@@ -323,9 +329,13 @@ namespace CheckersProject.src
                     {
                         Window.Player_1_Amount.Text = (Int32.Parse(Window.Player_1_Amount.Text) - 1).ToString();
                     }
-                    if(IsIncomingNetworkMove == false)
+                    if (IsIncomingNetworkMove == false)
                     {
-
+                        SendData(pos, p);
+                    }
+                    else if (IsIncomingNetworkMove == true)
+                    {
+                        this.State = (GameState)(-((int)this.State));
                     }
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(Window);
@@ -346,6 +356,14 @@ namespace CheckersProject.src
                 }
                 else
                 {
+                    if (IsIncomingNetworkMove == false)
+                    {
+                        SendData(pos, p);
+                    }
+                    else if (IsIncomingNetworkMove == true)
+                    {
+                        this.State = (GameState)(-((int)this.State));
+                    }
                     Piece temp = Board[pos.Row, pos.Column];
                     Board[pos.Row, pos.Column] = p;
                     Board[p.Row, p.Column] = temp;
@@ -384,9 +402,10 @@ namespace CheckersProject.src
             Read.Join();
         }
 
-        public void SendData(object pos, object p)
+        public void SendData(Pos pos, Piece p)
         {
-
+            sw.WriteLine("Move " + p.Row + " " + p.Column + " " + pos.Row + " " + pos.Column);
+            sw.WriteLine("GameStateSwap");
         }
     }
 }

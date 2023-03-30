@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ namespace CheckersProject.src
             Forfeit,
             Leave,
             Connect,
-            None
+            None,
+            Swap
         }
         public CmdManager()
         {
@@ -46,8 +48,19 @@ namespace CheckersProject.src
             {
                 return CmdType.Connect;
             }
+            else if (command.StartsWith("GameStateSwap"))
+            {
+                command = "Swap";
+                return CmdType.Swap;
+            }
 
             return CmdType.None;
         }
+
+        public void doCommand(CommandType type)
+        {
+
+        }
+        
     }
 }

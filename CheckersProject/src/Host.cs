@@ -276,6 +276,10 @@ namespace CheckersProject.src
                     {
                         Notify(pos, p);
                     }
+                    else if (IsIncomingNetworkMove == true)
+                    {
+                        this.State = (GameState)(-((int)this.State));
+                    }
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(Window);
 
@@ -298,6 +302,10 @@ namespace CheckersProject.src
                     if (IsIncomingNetworkMove == false)
                     {
                         Notify(pos, p);
+                    }
+                    else if (IsIncomingNetworkMove == true)
+                    {
+                        this.State = (GameState)(-((int)this.State));
                     }
                     Piece temp = Board[pos.Row, pos.Column];
                     Board[pos.Row, pos.Column] = p;

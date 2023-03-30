@@ -70,6 +70,7 @@
     <Compile Include="src\JoinedPlayer.cs" />
     <Compile Include="src\KingDecorator.cs" />
     <Compile Include="src\LANPlayer.cs" />
+    <Compile Include="src\Move.cs" />
     <Compile Include="src\Observer.cs" />
     <Compile Include="src\Piece.cs" />
     <Compile Include="src\Player.cs" />
