@@ -29,11 +29,12 @@ namespace CheckersProject
         private Button previousClickedButton;
         private Player player;
         private SolidColorBrush Hovered;
-        private Thread GetPlayerThread;
+        private GameType gameType;
 
 
-        public Board(GameType type)
+        public Board(GameType type, string ip)
         {
+            gameType = type;
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             /* Start here to understand this branch*/
             InitializeComponent();
@@ -42,6 +43,15 @@ namespace CheckersProject
             if (type == GameType.LAN)
             {
                 player = new LANPlayer(this);// Have to pass in this because the player class takes in a Board object as a parameter
+            }
+            else if(type == GameType.MultiplayerHost)
+            {
+                player = new Host(this);
+                
+            }
+            else if(type == GameType.MultiplayerJoin)
+            {
+                player = new JoinedPlayer(this, ip);
             }
             
             for (int i = 0; i < 8; i++)
@@ -100,6 +110,16 @@ namespace CheckersProject
             Player_2_Amount.Text = "12";
             this.ResizeMode = ResizeMode.NoResize;
             player.State = GameState.redTurn;
+            if (gameType == GameType.MultiplayerJoin)
+            {
+                ((JoinedPlayer)player).Connect();
+            }
+        }
+
+
+        public void ShowIP()
+        {
+            MessageBox.Show("Tell other user to connect to: " + ((Host)player).getObs().IP);
         }
 
        
@@ -196,7 +216,14 @@ namespace CheckersProject
         }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            if(this.gameType == GameType.MultiplayerHost)
+            {
+                ((Host)player).getObs().Close();
+            }
+            else if(this.gameType == GameType.MultiplayerJoin)
+            {
+                ((JoinedPlayer)player).Close();
+            }
             Menu m  = new Menu();
             this.Close();
             m.Show();

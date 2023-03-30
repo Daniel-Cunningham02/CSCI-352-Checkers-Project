@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Multiplayer" Height="300" Width="250">
     <Grid>
-        <TextBox x:Name="Ip" FontSize="18" Margin="50,61,50,172" Text="127.0.0.1:8080" TextAlignment="Center" TextChanged="Ip_TextChanged"></TextBox>
+        <TextBox x:Name="Ip" FontSize="18" Margin="50,61,50,172" Text="127.0.0.1:8080" TextAlignment="Center"></TextBox>
         <Button x:Name="Host" FontSize="18" Margin="90,173,90,60" Content="Host" Click="Host_Click"></Button>
         <Button x:Name="Join" FontSize="18" Margin="90,117,90,116" Content="Join" Click="Join_Click"></Button>
     </Grid>

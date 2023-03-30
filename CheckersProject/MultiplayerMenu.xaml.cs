@@ -31,22 +31,21 @@ namespace CheckersProject
 
         private void Host_Click(object sender, RoutedEventArgs e)
         {
-            Board b = new Board(GameType.MultiplayerHost);
+            Board b = new Board(GameType.MultiplayerHost, "");
             b.Show();
             this.Close();
+            b.ShowIP();
+            
         }
 
         private void Join_Click(object sender, RoutedEventArgs e)
         {
-            Board b = new Board(GameType.MultiplayerJoin);
+            IP = Ip.Text;
+            Board b = new Board(GameType.MultiplayerJoin, IP);
             b.Show();
             this.Close();
             //TODO: Need to somehow get click and return Joined player type to the board
         }
 
-        private void Ip_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            IP = Ip.Text;
-        }
     }
 }

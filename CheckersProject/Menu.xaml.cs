@@ -29,7 +29,7 @@ namespace CheckersProject
 
         private void Local_Game_Click(object sender, RoutedEventArgs e)
         {
-            Board b = new Board(GameType.LAN);
+            Board b = new Board(GameType.LAN, "");
             this.Close();
             b.Show();
         }

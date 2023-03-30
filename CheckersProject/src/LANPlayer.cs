@@ -224,8 +224,16 @@ namespace CheckersProject.src
         }
         override public bool Move(Pos pos, Piece p)
         {
-            ResetHighlights(p);
+            
             bool moveFound = false;
+            if(p.ValidMoves == null)
+            {
+                CheckValidMoves(p);
+            }
+            else
+            {
+                ResetHighlights(p);
+            }
             /* For now, this is just a really complicated swap afterwards it updates both of the images*/
             foreach (Pos x in p.ValidMoves)
             {
