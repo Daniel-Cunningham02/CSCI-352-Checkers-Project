@@ -16,36 +16,48 @@ using System.Windows.Shapes;
 namespace CheckersProject
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for SettingsWindow.xaml
     /// </summary>
-    public partial class Menu : Window
+    public partial class SettingsWindow : Window
     {
         Factory f = new Factory();
-        public Menu()
+
+        public SettingsWindow()
         {
-            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             InitializeComponent();
-            this.ResizeMode = ResizeMode.NoResize;
         }
 
-        private void Local_Game_Click(object sender, RoutedEventArgs e)
+        private void RedButton_Click(object sender, RoutedEventArgs e)
         {
             Button b = f.GetRedSquare().changeColor();
             Board board = new Board(b);
             this.Close();
             board.Show();
+            
         }
 
-        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        private void BlueButton_Click(object sender, RoutedEventArgs e)
         {
+            Button b = f.GetBlueSquare().changeColor();
+            Board board = new Board(b);
             this.Close();
+            board.Show();
         }
 
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow s = new SettingsWindow();
-            s.Show();
+            Menu m = new Menu();
             this.Close();
+            m.Show();
+        }
+
+        private void PurpleButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = f.GetPurpleSquare().changeColor();
+            Board board = new Board(b);
+            this.Close();
+            board.Show();
+
         }
     }
 }

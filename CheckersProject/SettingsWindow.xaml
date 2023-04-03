@@ -1,16 +1,16 @@
-﻿<Window x:Class="CheckersProject.Menu"
+﻿<Window x:Class="CheckersProject.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckersProject"
         mc:Ignorable="d"
-        Title="Checkers" Height="450" Width="800">
+        Title="SettingsWindow" Height="450" Width="400">
     <Window.Resources>
         <LinearGradientBrush x:Key="WindowBackground">
-            <GradientStop Offset="0" Color="Blue"/>
-            <GradientStop Offset=".5" Color="Bisque"/>
-            <GradientStop Offset="1" Color="Red"/>
+            <GradientStop Offset="0" Color="Green"/>
+            <GradientStop Offset=".5" Color="Purple"/>
+            <GradientStop Offset="1" Color="Blue"/>
         </LinearGradientBrush>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -69,11 +69,11 @@
         </Style>
     </Window.Resources>
     <Grid Background ="{DynamicResource WindowBackground}">
-        <Button Style="{DynamicResource RoundedButton}" x:Name="Local_Game" Content="Local Game" Background="LightSeaGreen" HorizontalAlignment="Left" Margin="40,125,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="Local_Game_Click"/>
-        <Button Style="{DynamicResource RoundedButton}" x:Name="QuitButton" Content="Quit Program" Background="Red" HorizontalAlignment="Left" Margin="40,283,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="QuitButton_Click"/>
-        <TextBlock FontSize="36" HorizontalAlignment="Left" Margin="15,64,0,0" TextWrapping="Wrap" Text="Checkers" VerticalAlignment="Top" Height="43" Width="136" FontFamily="Old English Text MT" Foreground="#FFE01515"/>
-        <Image Source="/brightBoard.png" HorizontalAlignment="Left" Height="279" Margin="302,0,0,0" VerticalAlignment="Center" Width="279"/>
-        <Button Style="{DynamicResource RoundedButton}" x:Name="SettingsButton" Content="Settings" Background="LightSeaGreen" HorizontalAlignment="Left" Margin="40,204,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="SettingsButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="RedThemeButton" Content="Red" Background="Red" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="RedButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="BlueThemeButton" Content="Blue" Background="Blue" HorizontalAlignment="Left" Margin="33,183,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="BlueButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="ExitButton" Content="Return" Background="RED" HorizontalAlignment="Left" Margin="284,24,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="ExitButton_Click"/>
+        <TextBlock FontSize="36" HorizontalAlignment="Left" Margin="22,32,0,0" TextWrapping="Wrap" Text="Themes" VerticalAlignment="Top" Height="43" Width="136" FontFamily="Old English Text MT" Foreground="#FFE01515"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="BlueThemeButton_Copy" Content="Purple" Background="MediumPurple" HorizontalAlignment="Left" Margin="33,268,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="PurpleButton_Click"/>
 
     </Grid>
 </Window>

@@ -16,6 +16,7 @@ using CheckersProject.src;
 using System.Threading;
 using System.Linq.Expressions;
 using System.Runtime.Remoting.Channels;
+using System.ComponentModel;
 
 namespace CheckersProject
 {
@@ -29,7 +30,7 @@ namespace CheckersProject
         Button previousClickedButton;
         Player player;
         SolidColorBrush Hovered;
-        public Board()
+        public Board(Button b) //need to pass in the parameters for the color change
         {
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             /* Start here to understand this branch*/
@@ -76,10 +77,12 @@ namespace CheckersProject
                     else
                     {
                         // Creating button here too not for functionality but for styling.
-                        Button button = new Button
+                        /**Button button = new Button
                         {
                             Background = Brushes.Red
-                        };
+                        };**/
+                        Button button = new Button(); //the problem here might be that the same button is being used
+                        button.Background = b.Background;
                
                         Grid.SetRow(button, i);
                         Grid.SetColumn(button, j);
