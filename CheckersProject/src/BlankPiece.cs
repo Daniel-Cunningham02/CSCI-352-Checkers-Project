@@ -40,5 +40,18 @@ namespace CheckersProject.src
             image2.Source = i.Source;
             return image2;
         }
+        public override bool CheckPromotion()
+        {
+            return false;
+        }
+
+        public override void UpdateComponent()
+        {
+        }
+
+        public override Piece GetComponent()
+        {
+            return null;
+        }
     }
 }

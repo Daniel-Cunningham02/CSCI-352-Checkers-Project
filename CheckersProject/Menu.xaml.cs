@@ -23,6 +23,7 @@ namespace CheckersProject
         Factory f = new Factory();
         public Menu()
         {
+            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
         }
