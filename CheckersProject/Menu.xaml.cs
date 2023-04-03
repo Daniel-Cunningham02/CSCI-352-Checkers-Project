@@ -21,15 +21,23 @@ namespace CheckersProject
     public partial class Menu : Window
     {
         Factory f = new Factory();
+        Button b;
+
         public Menu()
         {
+            b = f.GetRedSquare().changeColor();
+            InitializeComponent();
+            this.ResizeMode = ResizeMode.NoResize;
+        }
+        public Menu(Button b)
+        {
+            this.b = b;
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
         }
 
         private void Local_Game_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetRedSquare().changeColor();
             Board board = new Board(b);
             this.Close();
             board.Show();
