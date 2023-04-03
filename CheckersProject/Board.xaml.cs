@@ -192,7 +192,6 @@ namespace CheckersProject
         }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
-            
             Menu m  = new Menu();
             this.Close();
             m.Show();
