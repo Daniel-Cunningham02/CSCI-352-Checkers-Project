@@ -8,13 +8,6 @@ using System.Windows.Media;
 
 namespace CheckersProject.src
 {
-    /**internal class ThemeFactory
-    {
-    }**/
-    //int colorValue = 0;
-
-    //We need to make sure we are generating objects with this factory
-
     public interface ISquare
     {
         Button changeColor();
