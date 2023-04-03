@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckersProject"
         mc:Ignorable="d"
-        Title="Board" Height="700" Width="800">
+        Title="Checkers" Height="700" Width="800">
     <Grid>
         <Grid x:Name="grid" Margin="23,100,324,109">
             <Grid.RowDefinitions>
@@ -32,10 +32,13 @@
         </Grid>
         <Button x:Name="Quit_Button" Content="Quit Game" Background="Red" HorizontalAlignment="Left" Margin="664,23,0,0" VerticalAlignment="Top" Height="56" Width="104" Click="Quit_Button_Click"/>
         <TextBlock x:Name="Player_1_Pieces" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="481,427,0,0" TextWrapping="Wrap" Text="Player 1 Pieces" VerticalAlignment="Top" Width="140"/>
-        <TextBlock x:Name="Player_1_Pieces_Copy" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="481,187,0,0" TextWrapping="Wrap" Text="Player 2 Pieces " VerticalAlignment="Top" Width="140"/>
+        <TextBlock x:Name="Player_2_Pieces" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="481,187,0,0" TextWrapping="Wrap" Text="Player 2 Pieces " VerticalAlignment="Top" Width="140"/>
         <TextBlock FontSize="18" HorizontalAlignment="Left" Margin="481,218,0,0" TextWrapping="Wrap" Text="Remaining: " VerticalAlignment="Top" Height="36" Width="89"/>
         <TextBlock FontSize="18" HorizontalAlignment="Left" Margin="481,458,0,0" TextWrapping="Wrap" Text="Remaining: " VerticalAlignment="Top" Height="36" Width="89"/>
-        <TextBlock x:Name="Player_1_Pieces_Copy1" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="192,580,0,0" TextWrapping="Wrap" Text="Player 1" VerticalAlignment="Top" Width="70"/>
-        <TextBlock x:Name="Player_1_Pieces_Copy2" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="192,69,0,0" TextWrapping="Wrap" Text="Player 2" VerticalAlignment="Top" Width="70"/>
+
+        <TextBlock x:Name="Player_1" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="192,580,0,0" TextWrapping="Wrap" Text="Player 1" VerticalAlignment="Top" Width="70"/>
+        <TextBlock x:Name="Player_2" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="192,69,0,0" TextWrapping="Wrap" Text="Player 2" VerticalAlignment="Top" Width="70"/>
+        <TextBlock x:Name="Player_2_Amount" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="579,218,0,0" TextWrapping="Wrap" Text="filler" VerticalAlignment="Top" Width="66"/>
+        <TextBlock x:Name="Player_1_Amount" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="579,458,0,0" TextWrapping="Wrap" Text="filler" VerticalAlignment="Top" Width="66"/>
     </Grid>
 </Window>

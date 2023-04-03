@@ -25,12 +25,14 @@ namespace CheckersProject
 
         public Menu()
         {
+            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             b = f.GetRedSquare().changeColor();
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
         }
         public Menu(Button b)
         {
+            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             this.b = b;
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;

@@ -27,12 +27,16 @@ namespace CheckersProject
     {
         private bool FirstClick;
         Piece previousClick;
+        Button previousClickedButton;
         Player player;
+        SolidColorBrush Hovered;
         public Board(Button b) //need to pass in the parameters for the color change
         {
+            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             /* Start here to understand this branch*/
             InitializeComponent();
             FirstClick = false;
+            Hovered = new SolidColorBrush(Color.FromRgb(50, 255, 50));
 
             player = new Player(this); // Have to pass in this because the player class takes in a Board object as a parameter
             for(int i = 0; i < 8; i++)
@@ -44,7 +48,7 @@ namespace CheckersProject
                         // Creates button and adds it to the grid along with its color.
                         Button button = new Button {
                             Name = ("Button" + i.ToString() + j.ToString()),
-                            Background = Brushes.Black
+                            Background = Brushes.Black,
                         };
                         RegisterName(button.Name, button); /* Have to register the name with the button because they aren't bound
                         automatically when created programmatically. Name is later used to access the button and its content(piece image).*/
@@ -87,10 +91,14 @@ namespace CheckersProject
 
                 }
             }
+
+            Player_1_Amount.Text = "12";
+            Player_2_Amount.Text = "12";
             this.ResizeMode = ResizeMode.NoResize;
-            
+            player.State = GameState.redTurn;
         }
 
+       
 
         private void Move_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -102,17 +110,85 @@ namespace CheckersProject
             int col = Convert.ToInt32(clicked.Name.Substring(7));
             if (FirstClick == false)
             {
+                if(player.State == GameState.redTurn && player.GetPiece(new Pos(row, col)).ToString() != "CheckersProject.src.RedPieceDecorator")
+                {
+                    return;
+                    
+                    
+                }
+                else if(player.State == GameState.blackTurn && player.GetPiece(new Pos(row, col)).ToString() != "CheckersProject.src.BlackPieceDecorator")
+                {
+                    return;
+                }
+                previousClick = player.GetPiece(new Pos(row, col));
                 FirstClick = true; //Find a way to keep the hover effect for mouse here
                 /* Uses bool FirstClick here to account for having to click twice */
-                previousClick = player.GetPiece(new Pos(row, col));
-                player.CheckValidMoves(previousClick);
+
+                if(previousClick.ToString() != "CheckersProject.src.BlankPiece")
+                {
+                    FirstClick = true; //Find a way to keep the hover effect for mouse here
+                    /* Uses bool FirstClick here to account for having to click twice */
+
+                    clicked.Background = Hovered;
+                    previousClickedButton = clicked;
+                    player.CheckValidMoves(previousClick);
+                    player.HighlightValidMoves(previousClick);
+                }
+                else
+                {
+                    return;
+                }
             }
             else
             {
-                player.Move(new Pos(row, col), previousClick);
                 FirstClick = false;
+
+                previousClickedButton.Background = Brushes.Black;
+                if(player.Move(new Pos(row, col), previousClick))
+                {
+                    if(Int32.Parse(Player_1_Amount.Text) != 0 && Int32.Parse(Player_2_Amount.Text) != 0)
+                    {
+                        player.State = (GameState)(-((int)player.State));
+                    }
+                    else if(Int32.Parse(Player_1_Amount.Text) == 0)
+                    {
+                        player.State = GameState.blackWin;
+                    }
+                    else
+                    {
+                        player.State = GameState.redWin;
+                    }
+                }
+                if(player.GetPiece(new Pos(row, col)).CheckPromotion())
+                {
+                    player.GetPiece(new Pos(row, col)).updateImage(this);
+                }
+                
             }
-            
+            CheckWin();
+        }
+
+        private void CheckWin()
+        {
+            if(player.State == GameState.blackWin)
+            {
+                MessageBox.Show("Congrats! Blue wins!");
+                Menu m = new Menu();
+                this.Close();
+                m.Show();
+            }
+            else if(player.State == GameState.redWin)
+            {
+                // Finish here
+                MessageBox.Show("Congrats! Red wins!");
+                Menu m = new Menu();
+                this.Close();
+                m.Show();
+            }
+            else
+            {
+                return;
+            }
         }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
