@@ -71,9 +71,11 @@
     <Grid Background ="{DynamicResource WindowBackground}">
         <Button Style="{DynamicResource RoundedButton}" x:Name="RedThemeButton" Content="Red" Background="Red" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="RedButton_Click"/>
         <Button Style="{DynamicResource RoundedButton}" x:Name="BlueThemeButton" Content="Blue" Background="Blue" HorizontalAlignment="Left" Margin="33,183,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="BlueButton_Click"/>
-        <Button Style="{DynamicResource RoundedButton}" x:Name="ExitButton" Content="Return" Background="RED" HorizontalAlignment="Left" Margin="284,24,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="ExitButton_Click"/>
         <TextBlock FontSize="36" HorizontalAlignment="Left" Margin="22,32,0,0" TextWrapping="Wrap" Text="Themes" VerticalAlignment="Top" Height="43" Width="136" FontFamily="Old English Text MT" Foreground="#FFE01515"/>
         <Button Style="{DynamicResource RoundedButton}" x:Name="BlueThemeButton_Copy" Content="Purple" Background="MediumPurple" HorizontalAlignment="Left" Margin="33,268,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="PurpleButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="MagentaThemeButton" Content="Magenta" Background="Magenta" HorizontalAlignment="Left" Margin="168,268,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="MagentaButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="WhiteThemeButton" Content="White" Background="Azure" HorizontalAlignment="Left" Margin="168,183,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="WhiteButton_Click"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="IndigoThemeButton" Content="Indigo" Background="Indigo" HorizontalAlignment="Left" Margin="168,100,0,0" VerticalAlignment="Top" Height="59" Width="86" Click="IndigoButton_Click"/>
 
     </Grid>
 </Window>

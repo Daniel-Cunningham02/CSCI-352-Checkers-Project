@@ -44,16 +44,43 @@ namespace CheckersProject
             m.Show();
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        /**private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Menu m = new Menu(null);
             this.Close();
             m.Show();
-        }
+        }**/ 
 
         private void PurpleButton_Click(object sender, RoutedEventArgs e)
         {
             Button b = f.GetPurpleSquare().changeColor();
+            Menu m = new Menu(b);
+            this.Close();
+            m.Show();
+
+        }
+
+        private void MagentaButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = f.GetMagentaSquare().changeColor();
+            Menu m = new Menu(b);
+            this.Close();
+            m.Show();
+
+        }
+
+        private void WhiteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = f.GetWhiteSquare().changeColor();
+            Menu m = new Menu(b);
+            this.Close();
+            m.Show();
+
+        }
+
+        private void IndigoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = f.GetIndigoSquare().changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
