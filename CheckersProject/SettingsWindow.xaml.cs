@@ -44,12 +44,12 @@ namespace CheckersProject
             m.Show();
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        /**private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Menu m = new Menu(null);
             this.Close();
             m.Show();
-        }
+        }**/ 
 
         private void PurpleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -78,9 +78,9 @@ namespace CheckersProject
 
         }
 
-        private void VioletButton_Click(object sender, RoutedEventArgs e)
+        private void IndigoButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetVioletSquare().changeColor();
+            Button b = f.GetIndigoSquare().changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();

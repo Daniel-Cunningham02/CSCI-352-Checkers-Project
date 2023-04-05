@@ -18,12 +18,9 @@ namespace CheckersProject.src
         ISquare GetBlueSquare();
         ISquare GetRedSquare();
         ISquare GetPurpleSquare();
-
         ISquare GetMagentaSquare();
-
         ISquare GetWhiteSquare();
-
-        ISquare GetVioletSquare();
+        ISquare GetIndigoSquare();
     }
 
     public class Factory : SquareFactory
@@ -56,10 +53,10 @@ namespace CheckersProject.src
             return White;
         }
 
-        public ISquare GetVioletSquare()
+        public ISquare GetIndigoSquare()
         {
-            ISquare Violet = new Violet();
-            return Violet;
+            ISquare Indigo = new Indigo();
+            return Indigo;
         }
     }
 
@@ -105,11 +102,11 @@ namespace CheckersProject.src
             return b;
         }
     }
-    public class Violet : ISquare
+    public class Indigo : ISquare
     {
         public Button changeColor()
         {
-            Button b = new Button { Background = new SolidColorBrush(Colors.Violet) };
+            Button b = new Button { Background = new SolidColorBrush(Colors.Indigo) };
             return b;
         }
     }
