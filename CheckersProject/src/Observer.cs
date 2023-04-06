@@ -56,7 +56,7 @@ namespace CheckersProject.src
                     req = req.Substring(req.IndexOf(" ") + 1); // Trims the string down to {rowEnd} {colEnd}
                     int rowEnd = Int32.Parse(req.Substring(0, req.IndexOf(" ")));// Takes RowStart
                     req = req.Substring(req.IndexOf(" ") + 1); // Trims the string down to "{colStart} {rowEnd} {colEnd}"
-                    int colEnd = Int32.Parse(req.Substring(0, req.IndexOf(" "))); // Takes colStart
+                    int colEnd = Int32.Parse(req.Substring(0)); // Takes colStart
                     MessageBox.Show("Move " + rowStart + colStart + " to " + rowEnd + colEnd);
                     Pos pos = new Pos(rowEnd, colEnd);
                     Piece piece = p.Board[rowStart, colStart];
