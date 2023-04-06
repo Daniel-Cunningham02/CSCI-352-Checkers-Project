@@ -30,8 +30,10 @@ namespace CheckersProject
         Button previousClickedButton;
         Player player;
         SolidColorBrush Hovered;
+        Button settingButton;
         public Board(Button b) //need to pass in the parameters for the color change
         {
+            settingButton = b;
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             /* Start here to understand this branch*/
             InitializeComponent();
@@ -170,18 +172,18 @@ namespace CheckersProject
 
         private void CheckWin()
         {
-            if(player.State == GameState.blackWin)
+            if(player.State == GameState.blackWin || player.State == GameState.redForfeit)
             {
                 MessageBox.Show("Congrats! Blue wins!");
-                Menu m = new Menu();
+                Menu m = new Menu(settingButton);
                 this.Close();
                 m.Show();
             }
-            else if(player.State == GameState.redWin)
+            else if(player.State == GameState.redWin || player.State == GameState.blackForfeit)
             {
                 // Finish here
                 MessageBox.Show("Congrats! Red wins!");
-                Menu m = new Menu();
+                Menu m = new Menu(settingButton);
                 this.Close();
                 m.Show();
             }
@@ -192,9 +194,22 @@ namespace CheckersProject
         }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
-            Menu m  = new Menu();
+            Menu m  = new Menu(settingButton);
             this.Close();
             m.Show();
+        }
+
+        private void Forfeit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(player.State == GameState.redTurn)
+            {
+                player.State = GameState.redForfeit;
+            }
+            else if (player.State == GameState.blackTurn)
+            {
+                player.State = GameState.blackForfeit;
+            }
+            CheckWin();
         }
     }
 }

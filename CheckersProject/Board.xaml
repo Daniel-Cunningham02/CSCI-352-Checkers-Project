@@ -102,5 +102,6 @@
         <TextBlock x:Name="Player_2" FontSize="18" HorizontalAlignment="Left" Height="26" Margin="192,69,0,0" TextWrapping="Wrap" Text="Player 2" VerticalAlignment="Top" Width="70"/>
         <TextBlock x:Name="Player_2_Amount" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="579,218,0,0" TextWrapping="Wrap" Text="filler" VerticalAlignment="Top" Width="66"/>
         <TextBlock x:Name="Player_1_Amount" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="579,458,0,0" TextWrapping="Wrap" Text="filler" VerticalAlignment="Top" Width="66"/>
+        <Button Style="{DynamicResource RoundedButton}" x:Name="Forfeit_Button" Content="Forfeit" Background="LightSeaGreen" HorizontalAlignment="Left" Margin="664,100,0,0" VerticalAlignment="Top" Height="56" Width="104" Click="Forfeit_Button_Click"/>
     </Grid>
 </Window>
