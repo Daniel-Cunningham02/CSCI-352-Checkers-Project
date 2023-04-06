@@ -57,18 +57,21 @@ namespace CheckersProject.src
                     int rowEnd = Int32.Parse(req.Substring(0, req.IndexOf(" ")));// Takes RowStart
                     req = req.Substring(req.IndexOf(" ") + 1); // Trims the string down to "{colStart} {rowEnd} {colEnd}"
                     int colEnd = Int32.Parse(req.Substring(0)); // Takes colStart
-                    MessageBox.Show("Move " + rowStart + colStart + " to " + rowEnd + colEnd);
                     Pos pos = new Pos(rowEnd, colEnd);
                     Piece piece = p.Board[rowStart, colStart];
                     Update(pos, piece);
                 }
+                else if (type == CmdType.Swap)
+                {
+                    p.State = (GameState)(-(int)p.State);
+                }
                 else if (type == CmdType.Forfeit)
                 {
-                    ServerThread.Abort();
+                    ServerThread.Join();
                 }
                 else if (type == CmdType.Leave)
                 {
-                    ServerThread.Abort();
+                    ServerThread.Join();
                 }
             }
         }

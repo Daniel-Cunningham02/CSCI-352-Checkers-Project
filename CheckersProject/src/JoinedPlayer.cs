@@ -70,6 +70,10 @@ namespace CheckersProject.src
                     Move(pos, piece, true);
                     
                 }
+                else if (type == CmdType.Swap)
+                {
+                    State = (GameState)(-(int)State);
+                }
                 else if (type == CmdType.Forfeit)
                 {
                     client.Close();
