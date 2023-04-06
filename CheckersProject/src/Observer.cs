@@ -102,6 +102,7 @@ namespace CheckersProject.src
         {
             string command = "Move " + piece.Row + " " + piece.Column + " " + pos.Row + " " + pos.Column;
             sw.WriteLine(command);
+            sw.WriteLine("GameStateSwap");
             sw.Flush();
         }
 
