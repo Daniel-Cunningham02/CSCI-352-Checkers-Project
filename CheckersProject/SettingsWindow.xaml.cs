@@ -24,6 +24,7 @@ namespace CheckersProject
 
         public SettingsWindow()
         {
+            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             InitializeComponent();
         }
 
