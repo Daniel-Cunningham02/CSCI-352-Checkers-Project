@@ -409,7 +409,7 @@ namespace CheckersProject.src
         public void SendData(Pos pos, Piece p)
         {
             sw.WriteLine("Move " + p.Row + " " + p.Column + " " + pos.Row + " " + pos.Column);
-            sw.WriteLine("GameStateSwap");
+            
             sw.Flush();
         }
     }
