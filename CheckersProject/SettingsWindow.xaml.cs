@@ -30,7 +30,7 @@ namespace CheckersProject
 
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetRedSquare().changeColor();
+            Button b = f.GetSquare(Enum.Red).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();

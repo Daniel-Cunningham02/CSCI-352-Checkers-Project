@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace CheckersProject.src
 {
@@ -15,17 +16,48 @@ namespace CheckersProject.src
 
     public interface SquareFactory
     {
-        ISquare GetBlueSquare();
-        ISquare GetRedSquare();
-        ISquare GetPurpleSquare();
-        ISquare GetMagentaSquare();
-        ISquare GetWhiteSquare();
-        ISquare GetIndigoSquare();
+        ISquare GetSquare(ColorType color);
+        //ISquare GetBlueSquare();
+        //ISquare GetRedSquare();
+        //ISquare GetPurpleSquare();
+        //ISquare GetMagentaSquare();
+        //ISquare GetWhiteSquare();
+        //ISquare GetIndigoSquare();
+    }
+    public enum ColorType
+    {
+        Blue,
+        Red,
+        Purple,
+        Magenta,
+        White,
+        Indigo,
     }
 
     public class Factory : SquareFactory
     {
-        public ISquare GetBlueSquare()
+        public ISquare GetSquare(ColorType color)
+        {
+            switch (color)
+            {
+                case ColorType.Blue:
+                    return new Blue();
+                case ColorType.Red:
+                    return new Red();
+                case ColorType.Purple:
+                    return new Purple();
+                case ColorType.Magenta:
+                    return new Magenta();
+                case ColorType.White:
+                    return new White();
+                case ColorType.Indigo:
+                    return new Indigo();
+                default:
+                    return null;
+            }
+
+        }
+        /**public ISquare GetBlueSquare()
         {
             ISquare Blue = new Blue();
             return Blue;
@@ -57,7 +89,7 @@ namespace CheckersProject.src
         {
             ISquare Indigo = new Indigo();
             return Indigo;
-        }
+        }**/
     }
 
     public class Blue : ISquare
