@@ -17,12 +17,6 @@ namespace CheckersProject.src
     public interface SquareFactory
     {
         ISquare GetSquare(ColorType color);
-        //ISquare GetBlueSquare();
-        //ISquare GetRedSquare();
-        //ISquare GetPurpleSquare();
-        //ISquare GetMagentaSquare();
-        //ISquare GetWhiteSquare();
-        //ISquare GetIndigoSquare();
     }
     public enum ColorType
     {
@@ -57,39 +51,6 @@ namespace CheckersProject.src
             }
 
         }
-        /**public ISquare GetBlueSquare()
-        {
-            ISquare Blue = new Blue();
-            return Blue;
-        }
-        public ISquare GetRedSquare()
-        {
-            ISquare Red = new Red();
-            return Red;
-        }
-        public ISquare GetPurpleSquare()
-        {
-            ISquare Purple = new Purple();
-            return Purple;
-        }
-
-        public ISquare GetMagentaSquare()
-        {
-            ISquare Magenta = new Magenta();
-            return Magenta;
-        }
-
-        public ISquare GetWhiteSquare()
-        {
-            ISquare White = new White();
-            return White;
-        }
-
-        public ISquare GetIndigoSquare()
-        {
-            ISquare Indigo = new Indigo();
-            return Indigo;
-        }**/
     }
 
     public class Blue : ISquare

@@ -30,7 +30,7 @@ namespace CheckersProject
 
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetSquare(Enum.Red).changeColor();
+            Button b = f.GetSquare(ColorType.Red).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
@@ -39,22 +39,15 @@ namespace CheckersProject
 
         private void BlueButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetBlueSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Blue).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
         }
 
-        /**private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Menu m = new Menu(null);
-            this.Close();
-            m.Show();
-        }**/ 
-
         private void PurpleButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetPurpleSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Purple).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
@@ -63,7 +56,7 @@ namespace CheckersProject
 
         private void MagentaButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetMagentaSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Magenta).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
@@ -72,7 +65,7 @@ namespace CheckersProject
 
         private void WhiteButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetWhiteSquare().changeColor();
+            Button b = f.GetSquare(ColorType.White).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
@@ -81,7 +74,7 @@ namespace CheckersProject
 
         private void IndigoButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetIndigoSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Indigo).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
