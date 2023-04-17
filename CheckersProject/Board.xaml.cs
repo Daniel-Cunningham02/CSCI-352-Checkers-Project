@@ -79,10 +79,6 @@ namespace CheckersProject
                     else
                     {
                         // Creating button here too not for functionality but for styling.
-                        /**Button button = new Button
-                        {
-                            Background = Brushes.Red
-                        };**/
                         Button button = new Button(); //the problem here might be that the same button is being used
                         button.Background = b.Background;
                
