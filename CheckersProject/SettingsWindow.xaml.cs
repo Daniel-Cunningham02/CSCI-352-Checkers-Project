@@ -1,4 +1,14 @@
-﻿using CheckersProject.src;
+﻿/**
+ * @file SettingsWindow.xaml.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-18
+ * @brief cs file for the SettingsWindow.xaml
+ * 
+ * This file contains the logic for the buttons used in the settings window of the checkers program. 
+ * The buttons send the proper enumerator value to the factory class to change the color of the board. 
+ */
+
+using CheckersProject.src;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +34,7 @@ namespace CheckersProject
 
         public SettingsWindow()
         {
+            //This sets the icon image for the window.
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             InitializeComponent();
         }

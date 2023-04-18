@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * @file ThemeFactory.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-18
+ * @brief implementation of the board theme factory
+ * 
+ * This file contains the logic for the factory pattern that was used to change the color
+ * of the squares on the board. The Factory method returns button objects of the chosen color. 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +28,7 @@ namespace CheckersProject.src
     {
         ISquare GetSquare(ColorType color);
     }
+
     public enum ColorType
     {
         Blue,
@@ -32,6 +43,8 @@ namespace CheckersProject.src
     {
         public ISquare GetSquare(ColorType color)
         {
+            //This switch statement calls a class to generate a colored button depending
+            //on what the user has requested. 
             switch (color)
             {
                 case ColorType.Blue:

@@ -1,4 +1,14 @@
-﻿using CheckersProject.src;
+﻿/**
+ * @file Menu.xaml.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-18
+ * @brief cs file for the Menu.xaml
+ * 
+ * This file contains the logic for the buttons used in the Menu window of the checkers program. 
+ * These buttons are used to open other windows or close the program. 
+ */
+
+using CheckersProject.src;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +35,7 @@ namespace CheckersProject
 
         public Menu()
         {
+            //sets the icon image for the menu window
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             b = f.GetSquare(ColorType.Red).changeColor();
             InitializeComponent();

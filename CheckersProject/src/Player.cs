@@ -52,7 +52,7 @@ namespace CheckersProject.src
             }
         }
 
-        public void CheckValidMoves(Piece p) // Started working on this and decided to do it later.
+        public void CheckValidMoves(Piece p) 
         { 
             List<Pos> moves = new List<Pos>();
             if(p.ToString() == "CheckersProject.src.BlackPieceDecorator")
