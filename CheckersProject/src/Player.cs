@@ -10,6 +10,14 @@ using System.Windows.Media.Imaging;
 namespace CheckersProject.src
 {
 
+    enum Direction
+    {
+        Down = 1,
+        Up = -1,
+        Left = -1,
+        Right = 1,
+    }
+
     enum GameState
     {
         unstarted,
@@ -55,193 +63,7 @@ namespace CheckersProject.src
         public void CheckValidMoves(Piece p) 
         { 
             List<Pos> moves = new List<Pos>();
-            if(p.ToString() == "CheckersProject.src.BlackPieceDecorator")
-            {
-                if(p.Row + 1 < 8 && p.Row + 1 >= 0)
-                {
-                    
-                    if (p.Column + 1 < 8 && p.Column + 1 >= 0)
-                    {
-                        if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column + 1].ToString() != p.ToString())
-                        {
-                            if (p.Row + 2 < 8 && p.Row + 2 >= 0)
-                            {
-                                if (p.Column + 2 < 8 && p.Column + 2 >= 0)
-                                {
-                                    if (board[p.Row + 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
-                                    {
-                                        moves.Add(new Pos(p.Row + 2, p.Column + 2));
-                                    }
-                                }
-                            }
-                        }
-                        else if (board[p.Row + 1, p.Column + 1].ToString() == "CheckersProject.src.BlankPiece")
-                        {
-                            moves.Add(new Pos(p.Row + 1, p.Column + 1));
-                        }
-                    }
-                    if (p.Column - 1 < 8 && p.Column - 1 >= 0)
-                    {
-                        if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column - 1].ToString() != p.ToString())
-                        {
-                            if (p.Row + 2 < 8 && p.Row + 2 >= 0)
-                            {
-                                if (p.Column - 2 < 8 && p.Column - 2 >= 0)
-                                {
-                                    if (board[p.Row + 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
-                                    {
-                                        moves.Add(new Pos(p.Row + 2, p.Column - 2));
-                                    }
-                                }
-                            }
-                        }
-                        else if (board[p.Row + 1, p.Column - 1].ToString() == "CheckersProject.src.BlankPiece")
-                        {
-                            moves.Add(new Pos(p.Row + 1, p.Column - 1));
-                        }
-                    }
-                }
-                if(p.GetComponent() != null)
-                {
-                    if (p.Row - 1 < 8 && p.Row - 1 >= 0)
-                    {
-                        
-                        if (p.Column + 1 < 8 && p.Column + 1 >= 0)
-                        {
-                            if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column + 1].ToString() != p.ToString())
-                            {
-                                if (p.Row - 2 < 8 && p.Row - 2 >= 0)
-                                {
-                                    if (p.Column + 2 < 8 && p.Column + 2 >= 0)
-                                    {
-                                        if (board[p.Row - 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
-                                        {
-                                            moves.Add(new Pos(p.Row - 2, p.Column + 2));
-                                        }
-                                    }
-                                }
-                            }
-                            else if(board[p.Row - 1, p.Column + 1].ToString() == "CheckersProject.src.BlankPiece")
-                            {
-                                moves.Add(new Pos(p.Row - 1, p.Column + 1));
-                            }
-                        }
-                        if (p.Column - 1 < 8 && p.Column - 1 >= 0)
-                        {
-                            if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column - 1].ToString() != p.ToString())
-                            {
-                                if (p.Row - 2 < 8 && p.Row - 2 >= 0)
-                                {
-                                    if (p.Column - 2 < 8 && p.Column - 2 >= 0)
-                                    {
-                                        if (board[p.Row - 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
-                                        {
-                                            moves.Add(new Pos(p.Row - 2, p.Column - 2));
-                                        }
-                                    }
-                                }
-                            }
-                            else if(board[p.Row - 1, p.Column - 1].ToString() == "CheckersProject.src.BlankPiece")
-                            {
-                                moves.Add(new Pos(p.Row - 1, p.Column - 1));
-                            }
-                        }
-                    }
-                }
-            }
-            else if(p.ToString() == "CheckersProject.src.RedPieceDecorator")
-            {
-                if (p.Row - 1 < 8 && p.Row - 1 >= 0)
-                {
-                    if (p.Column + 1 < 8 && p.Column + 1 >= 0)
-                    {
-                        if (board[p.Row - 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column + 1].ToString() != p.ToString())
-                        {
-                            if(p.Row - 2 < 8 && p.Row - 2 >= 0)
-                            {
-                                if(p.Column + 2 < 8 && p.Column + 2 >= 0)
-                                {
-                                    if (board[p.Row - 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
-                                    {
-                                        moves.Add(new Pos(p.Row - 2, p.Column + 2));
-                                    }
-                                }
-                            }
-                        }
-                        else if(board[p.Row - 1, p.Column + 1].ToString() == "CheckersProject.src.BlankPiece")
-                        {
-                            moves.Add(new Pos(p.Row - 1, p.Column + 1));
-                        }
-                    }
-                    if (p.Column - 1 < 8 && p.Column - 1 >= 0)
-                    {
-                        if (board[p.Row - 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row - 1, p.Column - 1].ToString() != p.ToString())
-                        {
-                            if (p.Row - 2 < 8 && p.Row - 2 >= 0)
-                            {
-                                if (p.Column - 2 < 8 && p.Column - 2 >= 0)
-                                {
-                                    if (board[p.Row - 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
-                                    {
-                                        moves.Add(new Pos(p.Row - 2, p.Column - 2));
-                                    }
-                                }
-                            }
-                        }
-                        else if((board[p.Row - 1, p.Column - 1].ToString() == "CheckersProject.src.BlankPiece"))
-                        {
-                            moves.Add(new Pos(p.Row - 1, p.Column - 1));
-                        }
-                    }
-                }
-                if(p.GetComponent() != null)
-                {
-                    if (p.Row + 1 < 8 && p.Row >= 0)
-                    {
-                        if (p.Column + 1 < 8 && p.Column + 1 >= 0)
-                        {
-                            if (board[p.Row + 1, p.Column + 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column + 1].ToString() != p.ToString())
-                            {
-                                if (p.Row + 2 < 8 && p.Row + 2 >= 0)
-                                {
-                                    if (p.Column + 2 < 8 && p.Column + 2 >= 0)
-                                    {
-                                        if (board[p.Row + 2, p.Column + 2].ToString() == "CheckersProject.src.BlankPiece")
-                                        {
-                                            moves.Add(new Pos(p.Row + 2, p.Column + 2));
-                                        }
-                                    }
-                                }
-                            }
-                            else if (board[p.Row + 1, p.Column + 1].ToString() == "CheckersProject.src.BlankPiece")
-                            {
-                                moves.Add(new Pos(p.Row + 1, p.Column + 1));
-                            }
-                        }
-                        if (p.Column - 1 < 8 && p.Column - 1 >= 0)
-                        {
-                            if (board[p.Row + 1, p.Column - 1].ToString() != "CheckersProject.src.BlankPiece" && board[p.Row + 1, p.Column - 1].ToString() != p.ToString())
-                            {
-                                if (p.Row + 2 < 8 && p.Row + 2 >= 0)
-                                {
-                                    if (p.Column - 2 < 8 && p.Column - 2 >= 0)
-                                    {
-                                        if (board[p.Row + 2, p.Column - 2].ToString() == "CheckersProject.src.BlankPiece")
-                                        {
-                                            moves.Add(new Pos(p.Row + 2, p.Column - 2));
-                                        }
-                                    }
-                                }
-                            }
-                            else if (board[p.Row + 1, p.Column - 1].ToString() == "CheckersProject.src.BlankPiece")
-                            {
-                                moves.Add(new Pos(p.Row + 1, p.Column - 1));
-                            }
-                        }
-                    }
-                }
-            }
-            p.SetValidMoves(moves);
+            p.SetValidMoves(p.CheckValidMoves(board));
         }
         public bool Move(Pos pos, Piece p)
         {
