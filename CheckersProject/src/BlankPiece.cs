@@ -34,6 +34,16 @@ namespace CheckersProject.src
             ValidMoves = validMoves;
         }
 
+        public override List<Pos> CheckValidMoves(Piece[,] board)
+        {
+            return ValidMoves;
+        }
+
+        public override Pos CheckValidSpot(Piece[,] board, int Row, int Column, Direction Vertical, Direction Horizontal)
+        {
+            return null;
+        }
+
         public override Image getImageClone()
         {
             Image image2 = new Image();

@@ -18,18 +18,14 @@ namespace CheckersProject.src
 
         public List<Pos> ValidMoves { get { return validMoves; } set { this.validMoves = value; } }
         protected Image i = new Image();
-
         abstract public void updateImage(Board b);
-
         abstract public Image getImage();
-
         abstract public Image getImageClone();
-
+        abstract public List<Pos> CheckValidMoves(Piece[,] board);
+        abstract public Pos CheckValidSpot(Piece[,] board, int r, int c, Direction Vertical, Direction Horizontal);
         abstract public void SetValidMoves(List<Pos> validMoves);
         abstract public bool CheckPromotion();
-
         abstract public void UpdateComponent();
-
         abstract public Piece GetComponent();
     }
 }
