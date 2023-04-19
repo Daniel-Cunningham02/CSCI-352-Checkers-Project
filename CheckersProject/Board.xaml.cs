@@ -26,12 +26,14 @@ namespace CheckersProject
     public partial class Board : Window
     {
         private bool FirstClick;
+        Button setting;
         Piece previousClick;
         Button previousClickedButton;
         Player player;
         SolidColorBrush Hovered;
         public Board(Button b) //need to pass in the parameters for the color change
         {
+            setting = b;
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             /* Start here to understand this branch*/
             InitializeComponent();
@@ -173,7 +175,7 @@ namespace CheckersProject
             if(player.State == GameState.blackWin)
             {
                 MessageBox.Show("Congrats! Blue wins!");
-                Menu m = new Menu();
+                Menu m = new Menu(setting);
                 this.Close();
                 m.Show();
             }
@@ -181,7 +183,7 @@ namespace CheckersProject
             {
                 // Finish here
                 MessageBox.Show("Congrats! Red wins!");
-                Menu m = new Menu();
+                Menu m = new Menu(setting);
                 this.Close();
                 m.Show();
             }
@@ -192,7 +194,7 @@ namespace CheckersProject
         }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
-            Menu m  = new Menu();
+            Menu m  = new Menu(setting);
             this.Close();
             m.Show();
         }
