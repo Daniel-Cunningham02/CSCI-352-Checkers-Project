@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * @file Menu.xaml.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-18
+ * @brief cs file for the Board.xaml
+ * 
+ * This file contains the logic for the buttons used in the Board window of the checkers program. 
+ * This code also generates the board itself. 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +27,10 @@ using System.Threading;
 using System.Linq.Expressions;
 using System.Runtime.Remoting.Channels;
 using System.ComponentModel;
+using System.Reflection.Emit;
+using System.Diagnostics;
+using System.Security.Principal;
+using System.Windows.Media.Animation;
 
 namespace CheckersProject
 {
@@ -26,21 +40,24 @@ namespace CheckersProject
     public partial class Board : Window
     {
         private bool FirstClick;
-        Button setting;
         Piece previousClick;
         Button previousClickedButton;
         Player player;
         SolidColorBrush Hovered;
-        public Board(Button b) //need to pass in the parameters for the color change
+        Button settingButton;
+
+        //We need to pass in the parameters for the color change
+        public Board(Button b) 
         {
-            setting = b;
+            settingButton = b;
             this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
-            /* Start here to understand this branch*/
+           
             InitializeComponent();
             FirstClick = false;
             Hovered = new SolidColorBrush(Color.FromRgb(50, 255, 50));
 
-            player = new Player(this); // Have to pass in this because the player class takes in a Board object as a parameter
+            //We need to pass in this because the player class takes in a Board object as a parameter.
+            player = new Player(this); 
             for(int i = 0; i < 8; i++)
             {
                 for(int j = 0; j < 8; j++)
@@ -52,18 +69,26 @@ namespace CheckersProject
                             Name = ("Button" + i.ToString() + j.ToString()),
                             Background = Brushes.Black,
                         };
-                        RegisterName(button.Name, button); /* Have to register the name with the button because they aren't bound
-                        automatically when created programmatically. Name is later used to access the button and its content(piece image).*/
-                        button.Click += new RoutedEventHandler(Move_Button_Click); // Creates new EventHandler for the button because there is not a handler made automatically.
+
+                        //Have to register the name with the button because they aren't bound
+                        //automatically when created programmatically. Name is later used to
+                        //access the button and its content(piece image).
+                        RegisterName(button.Name, button);
+
+                        //Creates new EventHandler for the button because there is not a handler made automatically.
+                        button.Click += new RoutedEventHandler(Move_Button_Click); 
                         Grid.SetRow(button, i);
                         Grid.SetColumn(button, j);
                         grid.Children.Add(button);
 
                         Pos pos = new Pos(i, j);
-                        if (i < 3)  // Different pieces are created depending upon their position on the board
+
+                        //Different pieces are created depending upon their position on the board.
+                        if (i < 3)  
                         {
-                            BlackPieceDecorator piece = new BlackPieceDecorator(null, pos); 
-                            player.SetPiece(pos, piece); // Sets the piece in the 2D array and updates the button's content(image) on the grid.
+                            BlackPieceDecorator piece = new BlackPieceDecorator(null, pos);
+                            //Sets the piece in the 2D array and updates the button's content(image) on the grid.
+                            player.SetPiece(pos, piece); 
                         }
                         else if(i > 4)
                         {
@@ -72,18 +97,15 @@ namespace CheckersProject
                         }
                         else
                         {
-                            BlankPiece piece = new BlankPiece(null, new Pos(i, j)); // Blank piece is used as a placeholder for place where the pieces can move.
+                            //Blank piece is used as a placeholder for place where the pieces can move.
+                            BlankPiece piece = new BlankPiece(null, new Pos(i, j)); 
                             player.SetPiece(pos, piece);
                         }
                     }
                     else
                     {
-                        // Creating button here too not for functionality but for styling.
-                        /**Button button = new Button
-                        {
-                            Background = Brushes.Red
-                        };**/
-                        Button button = new Button(); //the problem here might be that the same button is being used
+                        // Creating button here too not, for functionality, but for styling.
+                        Button button = new Button(); 
                         button.Background = b.Background;
                
                         Grid.SetRow(button, i);
@@ -104,8 +126,10 @@ namespace CheckersProject
 
         private void Move_Button_Click(object sender, RoutedEventArgs e)
         {
-            Button clicked = (Button)sender; // Typecasts sender object to button.
+            //Typecasts sender object to button.
+            Button clicked = (Button)sender; 
             int row = Int32.Parse(clicked.Name.Substring(6,1)); 
+
             /* Parses the substring of button names to find the row and column. Button names
              * are formatted as such "Button" + Row + Column. Also had to use substring here because
              * Int32.Parse can only parse strings and Convert.ToInt32 takes the ascii value */
@@ -115,21 +139,20 @@ namespace CheckersProject
                 if(player.State == GameState.redTurn && player.GetPiece(new Pos(row, col)).ToString() != "CheckersProject.src.RedPieceDecorator")
                 {
                     return;
-                    
-                    
                 }
                 else if(player.State == GameState.blackTurn && player.GetPiece(new Pos(row, col)).ToString() != "CheckersProject.src.BlackPieceDecorator")
                 {
                     return;
                 }
                 previousClick = player.GetPiece(new Pos(row, col));
-                FirstClick = true; //Find a way to keep the hover effect for mouse here
-                /* Uses bool FirstClick here to account for having to click twice */
+
+                //This uses bool FirstClick here to account for having to click twice.
+                FirstClick = true; 
+                
 
                 if(previousClick.ToString() != "CheckersProject.src.BlankPiece")
                 {
-                    FirstClick = true; //Find a way to keep the hover effect for mouse here
-                    /* Uses bool FirstClick here to account for having to click twice */
+                    FirstClick = true; 
 
                     clicked.Background = Hovered;
                     previousClickedButton = clicked;
@@ -172,18 +195,17 @@ namespace CheckersProject
 
         private void CheckWin()
         {
-            if(player.State == GameState.blackWin)
+            if(player.State == GameState.blackWin || player.State == GameState.redForfeit)
             {
                 MessageBox.Show("Congrats! Blue wins!");
-                Menu m = new Menu(setting);
+                Menu m = new Menu(settingButton);
                 this.Close();
                 m.Show();
             }
-            else if(player.State == GameState.redWin)
+            else if(player.State == GameState.redWin || player.State == GameState.blackForfeit)
             {
-                // Finish here
                 MessageBox.Show("Congrats! Red wins!");
-                Menu m = new Menu(setting);
+                Menu m = new Menu(settingButton);
                 this.Close();
                 m.Show();
             }
@@ -194,9 +216,22 @@ namespace CheckersProject
         }
         private void Quit_Button_Click(object sender, RoutedEventArgs e)
         {
-            Menu m  = new Menu(setting);
+            Menu m  = new Menu(settingButton);
             this.Close();
             m.Show();
+        }
+
+        private void Forfeit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(player.State == GameState.redTurn)
+            {
+                player.State = GameState.redForfeit;
+            }
+            else if (player.State == GameState.blackTurn)
+            {
+                player.State = GameState.blackForfeit;
+            }
+            CheckWin();
         }
     }
 }

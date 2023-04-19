@@ -1,4 +1,14 @@
-﻿using CheckersProject.src;
+﻿/**
+ * @file SettingsWindow.xaml.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-18
+ * @brief cs file for the SettingsWindow.xaml
+ * 
+ * This file contains the logic for the buttons used in the settings window of the checkers program. 
+ * The buttons send the proper enumerator value to the factory class to change the color of the board. 
+ */
+
+using CheckersProject.src;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +34,14 @@ namespace CheckersProject
 
         public SettingsWindow()
         {
+            //This sets the icon image for the window.
+            this.Icon = new BitmapImage(new Uri("..\\..\\CheckerRedTransparent.png", UriKind.Relative));
             InitializeComponent();
         }
 
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetRedSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Red).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
@@ -38,22 +50,15 @@ namespace CheckersProject
 
         private void BlueButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetBlueSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Blue).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
         }
 
-        /**private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Menu m = new Menu(null);
-            this.Close();
-            m.Show();
-        }**/ 
-
         private void PurpleButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetPurpleSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Purple).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
@@ -62,7 +67,7 @@ namespace CheckersProject
 
         private void MagentaButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetMagentaSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Magenta).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
@@ -71,7 +76,7 @@ namespace CheckersProject
 
         private void WhiteButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetWhiteSquare().changeColor();
+            Button b = f.GetSquare(ColorType.White).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();
@@ -80,7 +85,7 @@ namespace CheckersProject
 
         private void IndigoButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = f.GetIndigoSquare().changeColor();
+            Button b = f.GetSquare(ColorType.Indigo).changeColor();
             Menu m = new Menu(b);
             this.Close();
             m.Show();

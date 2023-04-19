@@ -60,7 +60,7 @@ namespace CheckersProject.src
             }
         }
 
-        public void CheckValidMoves(Piece p) // Started working on this and decided to do it later.
+        public void CheckValidMoves(Piece p) 
         { 
             List<Pos> moves = new List<Pos>();
             p.SetValidMoves(p.CheckValidMoves(board));
@@ -69,7 +69,7 @@ namespace CheckersProject.src
         {
             ResetHighlights(p);
             bool moveFound = false;
-            /* For now, this is just a really complicated swap afterwards it updates both of the images*/
+            //For now, this is just a really complicated swap afterwards it updates both of the images
             foreach(Pos x in p.ValidMoves)
             {
                 if (x.Row == pos.Row && x.Column == pos.Column)
