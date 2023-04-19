@@ -1,4 +1,13 @@
-﻿using System;
+﻿/**
+ * @file KingDecorator.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-19
+ * @brief cs file for the KingDecorator
+ * 
+ * This file contains the logic for a king piece. 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

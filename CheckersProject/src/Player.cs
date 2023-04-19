@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * @file Player.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-19
+ * @brief cs file for the Player
+ * 
+ * This file contains the logic for the Player class which is 
+ * used in the checkers game. 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

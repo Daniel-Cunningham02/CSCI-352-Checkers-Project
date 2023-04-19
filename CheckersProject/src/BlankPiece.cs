@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * @file BlackPieceDecorator.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-19
+ * @brief cs file for the BlankPieceDecorator
+ * 
+ * This file contains the logic for a blank piece, which 
+ * is an empty square on the checker board. 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;

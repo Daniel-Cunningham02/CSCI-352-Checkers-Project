@@ -1,4 +1,15 @@
-﻿using System;
+﻿/**
+ * @file ABSPieceDecorator.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-19
+ * @brief cs file for the abstract Decorator
+ * 
+ * This file contains the logic abstract Decorator that the other decorator 
+ * classes inherit from. 
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

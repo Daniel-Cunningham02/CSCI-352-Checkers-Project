@@ -1,4 +1,15 @@
-﻿using System;
+﻿/**
+ * @file BlackPieceDecorator.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-19
+ * @brief cs file for the BlackPieceDecorator
+ * 
+ * This file contains the logic for the decorator for a black (blue)
+ * piece on the board. It contains logic for performing tasks such as king promotion. 
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;

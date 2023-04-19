@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * @file Piece.cs
+ * @authors Connor Walsh, Daniel Cunningham
+ * @date 2023-4-19
+ * @brief cs file for the abstract Piece class
+ * 
+ * This file contains the abstract Piece class which defines 
+ * the various attributes of a checker piece. 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
