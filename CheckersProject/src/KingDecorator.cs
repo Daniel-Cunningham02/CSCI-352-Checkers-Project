@@ -10,7 +10,7 @@ namespace CheckersProject.src
 {
     internal class KingDecorator : ABSPieceDecorator
     {
-
+        string type;
         public KingDecorator(Piece c, Pos pos, string PieceType) : base(c) {
             if(PieceType == "CheckersProject.src.BlackPieceDecorator")
             {
@@ -20,6 +20,8 @@ namespace CheckersProject.src
             {
                 i.Source = new BitmapImage(new Uri("/RedKing.png", UriKind.Relative));
             }
+
+            type = PieceType;
         }
         
         public override void updateImage(Board b)
@@ -67,7 +69,7 @@ namespace CheckersProject.src
             {
                 return null;
             }
-            if (board[r, c].ToString() != "CheckersProject.src.BlankPiece" && board[r, c].ToString() != this.ToString())
+            if (board[r, c].ToString() != "CheckersProject.src.BlankPiece" && board[r, c].ToString() != type)
             {
                 if (r + ((int)Vertical) > 7 || r + ((int)Vertical) < 0 || c + ((int)Horizontal) > 7 || c + ((int)Horizontal) < 0)
                 {
