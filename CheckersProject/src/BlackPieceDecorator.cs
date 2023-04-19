@@ -5,7 +5,7 @@
  * @brief cs file for the BlackPieceDecorator
  * 
  * This file contains the logic for the decorator for a black (blue)
- * piece on the board. It contains logic for performing tasks such as king promotion. 
+ * piece on the board. It contains logic for performing tasks such as king promotion, move checking, image updating, etc. 
  */
 
 

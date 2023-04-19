@@ -5,7 +5,7 @@
  * @brief cs file for the RedPieceDecorator
  * 
  * This file contains the logic for the decorator for a red piece on the board. 
- * It contains logic for performing tasks such as king promotion. 
+ * It contains logic for performing tasks such as king promotion, move checking, image updating, etc.
  */
 
 using System;

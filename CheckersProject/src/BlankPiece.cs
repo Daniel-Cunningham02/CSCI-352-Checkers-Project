@@ -5,7 +5,7 @@
  * @brief cs file for the BlankPieceDecorator
  * 
  * This file contains the logic for a blank piece, which 
- * is an empty square on the checker board. 
+ * is an empty square on the checker board
  */
 
 using System;
