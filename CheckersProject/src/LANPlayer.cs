@@ -222,7 +222,7 @@ namespace CheckersProject.src
             }
             p.SetValidMoves(moves);
         }
-        override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove)
+        override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove, bool IsDispatched)
         {
             
             bool moveFound = false;

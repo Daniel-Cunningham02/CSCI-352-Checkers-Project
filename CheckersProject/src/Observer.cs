@@ -95,13 +95,14 @@ namespace CheckersProject.src
 
         public void Update(Pos pos, Piece piece)
         {
-            p.Move(pos, piece, true);
+            p.Move(pos, piece, true, false);
         }
 
         public void Publish(Pos pos, Piece piece)
         {
             string command = "Move " + piece.Row + " " + piece.Column + " " + pos.Row + " " + pos.Column;
             sw.WriteLine(command);
+            sw.WriteLine("GameStateSwap");
             sw.Flush();
         }
 

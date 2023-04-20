@@ -45,7 +45,7 @@ namespace CheckersProject.src
         abstract public void ResetHighlights(Piece p);
         abstract public void CheckValidMoves(Piece p);
 
-        abstract public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove);
+        abstract public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove, bool IsDispatched);
 
         abstract public void SetPiece(Pos pos, Piece p);
 

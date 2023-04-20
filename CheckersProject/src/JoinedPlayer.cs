@@ -67,7 +67,7 @@ namespace CheckersProject.src
                     int colEnd = Int32.Parse(inData); // Takes colStart
                     Pos pos = new Pos(rowEnd, colEnd);
                     Piece piece = Board[rowStart, colStart];
-                    Move(pos, piece, true);
+                    Move(pos, piece, true, false);
                     
                 }
                 else if (type == CmdType.Swap)
@@ -300,11 +300,14 @@ namespace CheckersProject.src
             }
             p.SetValidMoves(moves);
         }
-        override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove)
+
+        override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove, bool IsDispatched)
         {
-            if(IsIncomingNetworkMove == true)
+            if(IsIncomingNetworkMove == true && IsDispatched == false)
             {
                 CheckValidMoves(p);
+                App.Current.Dispatcher.Invoke(() => { Move(pos, p, false, true); });
+                return true;
             }
             bool moveFound = false;
             if (p.ValidMoves == null)
@@ -342,14 +345,11 @@ namespace CheckersProject.src
                             Window.Player_1_Amount.Text = (Int32.Parse(Window.Player_1_Amount.Text) - 1).ToString();
                         });
                     }
-                    if (IsIncomingNetworkMove == false)
+                    if (IsDispatched == false)
                     {
                         SendData(pos, p);
                     }
-                    else if (IsIncomingNetworkMove == true)
-                    {
-                        this.State = (GameState)(-((int)this.State));
-                    }
+                    
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(Window);
 
@@ -369,13 +369,9 @@ namespace CheckersProject.src
                 }
                 else
                 {
-                    if (IsIncomingNetworkMove == false)
+                    if (IsDispatched == false)
                     {
                         SendData(pos, p);
-                    }
-                    else if (IsIncomingNetworkMove == true)
-                    {
-                        this.State = (GameState)(-((int)this.State));
                     }
                     Piece temp = Board[pos.Row, pos.Column];
                     Board[pos.Row, pos.Column] = p;
@@ -418,7 +414,7 @@ namespace CheckersProject.src
         public void SendData(Pos pos, Piece p)
         {
             sw.WriteLine("Move " + p.Row + " " + p.Column + " " + pos.Row + " " + pos.Column);
-            
+            sw.WriteLine("GameStateSwap");
             sw.Flush();
         }
     }

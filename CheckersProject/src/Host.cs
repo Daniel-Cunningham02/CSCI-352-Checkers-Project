@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace CheckersProject.src
 {
@@ -239,11 +241,13 @@ namespace CheckersProject.src
             }
             p.SetValidMoves(moves);
         }
-        override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove)
+        override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove, bool IsDispatched)
         {
-            if(IsIncomingNetworkMove == true)
+            if(IsIncomingNetworkMove == true && IsDispatched == false)
             {
                 CheckValidMoves(p);
+                App.Current.Dispatcher.Invoke(() => { Move(pos, p, false, true); });
+                return true;
             }
             bool moveFound = false;
             if (p.ValidMoves == null)
@@ -275,8 +279,7 @@ namespace CheckersProject.src
                     if (Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].ToString() == "CheckersProject.src.BlackPieceDecorator")
                     {
                         App.Current.Dispatcher.Invoke(() => {
-                            Window.Player_2_Amount.Text = (Int32.Parse(Window.Player_2_Amount.Text) - 1).ToString();
-                        });
+                            Window.Player_2_Amount.Text = (Int32.Parse(Window.Player_2_Amount.Text) - 1).ToString(); });
                     }
                     else
                     {
@@ -285,13 +288,9 @@ namespace CheckersProject.src
                             Window.Player_1_Amount.Text = (Int32.Parse(Window.Player_1_Amount.Text) - 1).ToString();
                         });
                     }
-                    if(IsIncomingNetworkMove == false)
+                    if (IsDispatched == false)
                     {
                         Notify(pos, p);
-                    }
-                    else if (IsIncomingNetworkMove == true)
-                    {
-                        this.State = (GameState)(-((int)this.State));
                     }
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2] = new BlankPiece(null, new Pos((p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2));
                     Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].updateImage(Window);
@@ -312,13 +311,9 @@ namespace CheckersProject.src
                 }
                 else
                 {
-                    if (IsIncomingNetworkMove == false)
+                    if (IsDispatched == false)
                     {
                         Notify(pos, p);
-                    }
-                    else if (IsIncomingNetworkMove == true)
-                    {
-                        this.State = (GameState)(-((int)this.State));
                     }
                     Piece temp = Board[pos.Row, pos.Column];
                     Board[pos.Row, pos.Column] = p;

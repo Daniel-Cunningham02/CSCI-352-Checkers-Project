@@ -17,7 +17,7 @@ namespace CheckersProject.src
         public int Column { get { return column; } set {this.column = value; } }
 
         public List<Pos> ValidMoves { get { return validMoves; } set { this.validMoves = value; } }
-        protected Image i = new Image();
+        protected Image i = new Image(); // Thread must be STA
 
         abstract public void updateImage(Board b);
 
