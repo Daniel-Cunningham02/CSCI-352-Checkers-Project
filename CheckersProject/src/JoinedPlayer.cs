@@ -330,11 +330,17 @@ namespace CheckersProject.src
                 {
                     if (Board[(p.Row + pos.Row) / 2, (p.Column + pos.Column) / 2].ToString() == "CheckersProject.src.BlackPieceDecorator")
                     {
-                        Window.Player_2_Amount.Text = (Int32.Parse(Window.Player_2_Amount.Text) - 1).ToString();
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            Window.Player_2_Amount.Text = (Int32.Parse(Window.Player_2_Amount.Text) - 1).ToString();
+                        });
                     }
                     else
                     {
-                        Window.Player_1_Amount.Text = (Int32.Parse(Window.Player_1_Amount.Text) - 1).ToString();
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            Window.Player_1_Amount.Text = (Int32.Parse(Window.Player_1_Amount.Text) - 1).ToString();
+                        });
                     }
                     if (IsIncomingNetworkMove == false)
                     {
