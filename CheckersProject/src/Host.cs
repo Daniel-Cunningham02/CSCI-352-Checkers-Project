@@ -42,7 +42,12 @@ namespace CheckersProject.src
         {
             foreach (Pos pos in p.ValidMoves)
             {
-                ((Button)grid.FindName("Button" + pos.Row.ToString() + pos.Column.ToString())).Content = new Image { Source = new BitmapImage(new Uri("/CheckerBlank.png", UriKind.Relative)) };
+                App.Current.Dispatcher.Invoke(() => {
+                    ((Button)grid.FindName("Button" + pos.Row.ToString() + pos.Column.ToString())).Content = new Image
+                    {
+                        Source = new BitmapImage(new Uri("/CheckerBlank.png", UriKind.Relative))
+                    };
+                });
             }
         }
 
