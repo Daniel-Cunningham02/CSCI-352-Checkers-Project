@@ -241,7 +241,10 @@ namespace CheckersProject.src
         }
         override public bool Move(Pos pos, Piece p, bool IsIncomingNetworkMove)
         {
-
+            if(IsIncomingNetworkMove == true)
+            {
+                CheckValidMoves(p);
+            }
             bool moveFound = false;
             if (p.ValidMoves == null)
             {
