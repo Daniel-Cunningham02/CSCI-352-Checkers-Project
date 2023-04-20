@@ -15,6 +15,7 @@ namespace CheckersProject.src
         Observer observer;
         public Host(Board b) : base(b)
         {
+            
             observer = new Observer();
             observer.Attach(this);
         }
@@ -307,6 +308,10 @@ namespace CheckersProject.src
 
                     temp.updateImage(Window);
                     p.updateImage(Window);
+                    if (p.CheckPromotion())
+                    {
+                        p.updateImage(Window);
+                    }
                     return true;
                 }
                 else
@@ -326,6 +331,10 @@ namespace CheckersProject.src
 
                     temp.updateImage(Window);
                     p.updateImage(Window);
+                    if (p.CheckPromotion())
+                    {
+                        p.updateImage(Window);
+                    }
                     return true;
                 }
             }

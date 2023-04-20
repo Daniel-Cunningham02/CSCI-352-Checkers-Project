@@ -270,6 +270,10 @@ namespace CheckersProject.src
 
                     temp.updateImage(Window);
                     p.updateImage(Window);
+                    if (p.CheckPromotion())
+                    {
+                        p.updateImage(Window);
+                    }
                     return true;
                 }
                 else
@@ -285,6 +289,10 @@ namespace CheckersProject.src
 
                     temp.updateImage(Window);
                     p.updateImage(Window);
+                    if (p.CheckPromotion())
+                    {
+                        p.updateImage(Window);
+                    }
                     return true;
                 }
             }

@@ -179,10 +179,7 @@ namespace CheckersProject
                         player.State = GameState.redWin;
                     }
                 }
-                if(player.GetPiece(new Pos(row, col)).CheckPromotion())
-                {
-                    player.GetPiece(new Pos(row, col)).updateImage(this);
-                }
+                
                 
             }
             CheckWin();
