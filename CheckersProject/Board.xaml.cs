@@ -189,6 +189,7 @@ namespace CheckersProject
         {
             if(player.State == GameState.blackWin)
             {
+                // make observer and joinedPlayer send win condition
                 MessageBox.Show("Congrats! Blue wins!");
                 Menu m = new Menu();
                 this.Close();

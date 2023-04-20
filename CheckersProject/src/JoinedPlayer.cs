@@ -84,6 +84,23 @@ namespace CheckersProject.src
                     client.Close();
                     this.Close();
                 }
+                else if(type == CmdType.WinBlue)
+                {
+                    client.Close();
+                    MessageBox.Show("Congrats! Blue wins!");
+                    Menu m = new Menu();
+                    Window.Close();
+                    m.Show();
+
+                }
+                else if(type == CmdType.WinRed)
+                {
+                    client.Close();
+                    MessageBox.Show("Congrats! Red wins!");
+                    Menu m = new Menu();
+                    Window.Close();
+                    m.Show();
+                }
             }
         }
         override public void HighlightValidMoves(Piece p)

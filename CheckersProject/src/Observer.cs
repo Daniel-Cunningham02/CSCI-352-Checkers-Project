@@ -73,6 +73,23 @@ namespace CheckersProject.src
                 {
                     ServerThread.Join();
                 }
+                else if (type == CmdType.WinBlue)
+                {
+                    listener.Stop();
+                    MessageBox.Show("Congrats! Blue wins!");
+                    Menu m = new Menu();
+                    p.Window.Close();
+                    m.Show();
+
+                }
+                else if (type == CmdType.WinRed)
+                {
+                    listener.Stop();
+                    MessageBox.Show("Congrats! Red wins!");
+                    Menu m = new Menu();
+                    p.Window.Close();
+                    m.Show();
+                }
             }
         }
 

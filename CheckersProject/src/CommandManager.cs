@@ -16,7 +16,9 @@ namespace CheckersProject.src
             Leave,
             Connect,
             None,
-            Swap
+            Swap,
+            WinBlue,
+            WinRed
         }
         public CmdManager()
         {
@@ -52,6 +54,16 @@ namespace CheckersProject.src
             {
                 command = "Swap";
                 return CmdType.Swap;
+            }
+            else if (command.StartsWith("WinBlue"))
+            {
+                command = "Blue Win";
+                return CmdType.WinBlue;
+            }
+            else if(command.StartsWith("WinRed"))
+            {
+                command = "Red win";
+                return CmdType.WinRed;
             }
 
             return CmdType.None;
